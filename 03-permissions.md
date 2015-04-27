@@ -1,6 +1,5 @@
 ---
-layout: lesson
-root: ../..
+layout: page
 title: Permissions
 ---
 Unix controls who can read, modify, and run files using *permissions*.
@@ -9,9 +8,9 @@ the concepts are similar,
 but the rules are different.
 
 Let's start with Nelle.
-She has a unique [user name](../../gloss.html#user-name),
+She has a unique [user name](./reference.html#user-name),
 `nnemo`,
-and a [user ID](../../gloss.html#user-id),
+and a [user ID](./reference.html#user-id),
 1404.
 
 > #### Why Integer IDs?
@@ -35,9 +34,9 @@ and a [user ID](../../gloss.html#user-id),
 > in the same way that someone working in a lab might talk about Experiment 28
 > instead of "the chronotypical alpha-response trials on anacondas".
 
-Users can belong to any number of [groups](../../gloss.html#user-group),
-each of which has a unique [group name](../../gloss.html#user-group-name)
-and numeric [group ID](../../gloss.html#user-group-id).
+Users can belong to any number of [groups](./reference.html#user-group),
+each of which has a unique [group name](./reference.html#user-group-name)
+and numeric [group ID](./reference.html#user-group-id).
 The list of who's in what group is usually stored in the file `/etc/group`.
 (If you're in front of a Unix machine right now,
 try running `cat /etc/group` to look at that file.)
@@ -83,15 +82,13 @@ This is its way of telling us that `setup` is executable,
 i.e.,
 that it's (probably) something the computer can run.
 
-~~~
+~~~ {.input}
 $ cd labs
 $ ls -F
 ~~~
-{:class="in"}
-~~~
+~~~ {.output}
 safety.txt    setup*     waiver.txt
 ~~~
-{:class="out"}
 
 > #### Necessary But Not Sufficient
 >
@@ -108,16 +105,14 @@ safety.txt    setup*     waiver.txt
 
 Now let's run the command `ls -l`:
 
-~~~
+~~~ {.input}
 $ ls -l
 ~~~
-{:class="in"}
-~~~
+~~~ {.output}
 -rw-rw-r-- 1 vlad bio  1158  2010-07-11 08:22 safety.txt
 -rwxr-xr-x 1 vlad bio 31988  2010-07-23 20:04 setup
 -rw-rw-r-- 1 vlad bio  2312  2010-07-11 08:23 waiver.txt
 ~~~
-{:class="out"}
 
 The `-l` flag tells `ls` to give us a long-form listing.
 It's a lot of information, so let's go through the columns in turn.
@@ -156,14 +151,12 @@ To change permissions, we use the `chmod` command
 (whose name stands for "change mode").
 Here's a long-form listing showing the permissions on the final grades in the course Vlad is teaching:
 
-~~~
+~~~ {.input}
 $ ls -l final.grd
 ~~~
-{:class="in"}
-~~~
+~~~ {.output}
 -rwxrwxrwx 1 vlad bio  4215  2010-08-29 22:30 final.grd
 ~~~
-{:class="out"}
 
 Whoops: everyone in the world can read it&mdash;and what's worse,
 modify it!
@@ -172,10 +165,9 @@ which would almost certainly not work.)
 
 The command to change the owner's permissions to `rw-` is:
 
-~~~
+~~~ {.input}
 $ chmod u=rw final.grd
 ~~~
-{:class="in"}
 
 The 'u' signals that we're changing the privileges
 of the user (i.e., the file's owner),
@@ -183,39 +175,33 @@ and `rw` is the new set of permissions.
 A quick `ls -l` shows us that it worked,
 because the owner's permissions are now set to read and write:
 
-~~~
+~~~ {.input}
 $ ls -l final.grd
 ~~~
-{:class="in"}
-~~~
+~~~ {.output}
 -rw-rwxrwx 1 vlad bio  4215  2010-08-30 08:19 final.grd
 ~~~
-{:class="out"}
 
 Let's run `chmod` again to give the group read-only permission:
 
-~~~
+~~~ {.input}
 $ chmod g=r final.grd
 $ ls -l final.grd
 ~~~
-{:class="in"}
-~~~
+~~~ {.output}
 -rw-r--rw- 1 vlad bio  4215  2010-08-30 08:19 final.grd
 ~~~
-{:class="out"}
 
 And finally,
 let's give "all" (everyone on the system who isn't the file's owner or in its group) no permissions at all:
 
-~~~
+~~~ {.input}
 $ chmod a= final.grd
 $ ls -l final.grd
 ~~~
-{:class="in"}
-~~~
+~~~ {.output}
 -rw-r----- 1 vlad bio  4215  2010-08-30 08:20 final.grd
 ~~~
-{:class="out"}
 
 Here,
 the 'a' signals that we're changing permissions for "all",
@@ -226,32 +212,28 @@ We can search by permissions, too.
 Here, for example, we can use `-type f -perm -u=x` to find files
 that the user can execute:
 
-~~~
+~~~ {.input}
 $ find . -type f -perm -u=x
 ~~~
-{:class="in"}
-~~~
+~~~ {.output}
 ./tools/format
 ./tools/stats
 ~~~
-{:class="out"}
 
 Before we go any further,
 let's run `ls -a -l`
 to get a long-form listing that includes directory entries that are normally hidden:
 
-~~~
+~~~ {.input}
 $ ls -a -l
 ~~~
-{:class="in"}
-~~~
+~~~ {.output}
 drwxr-xr-x 1 vlad bio     0  2010-08-14 09:55 .
 drwxr-xr-x 1 vlad bio  8192  2010-08-27 23:11 ..
 -rw-rw-r-- 1 vlad bio  1158  2010-07-11 08:22 safety.txt
 -rwxr-xr-x 1 vlad bio 31988  2010-07-23 20:04 setup
 -rw-rw-r-- 1 vlad bio  2312  2010-07-11 08:23 waiver.txt
 ~~~
-{:class="out"}
 
 The permissions for `.` and `..` (this directory and its parent) start with a 'd'.
 But look at the rest of their permissions:
@@ -285,7 +267,7 @@ without opening up everything else.
 
 Those are the basics of permissions on Unix.
 As we said at the outset, though, things work differently on Windows.
-There, permissions are defined by [access control lists](../../gloss.html#access-control-list),
+There, permissions are defined by [access control lists](./reference.html#access-control-list),
 or ACLs.
 An ACL is a list of pairs, each of which combines a "who" with a "what".
 For example,
@@ -299,17 +281,17 @@ but it's also more complex to administer and understand on small systems.
 Some modern variants of Unix support ACLs as well as the older read-write-execute permissions,
 but hardly anyone uses them.
 
-<div class="challenge" markdown="1">
-If `ls -l myfile.php` returns the following details:
+> ## Challenge {.callout}
+> If `ls -l myfile.php` returns the following details:
+>
+> ~~~ {.output}
+> -rwxr-xr-- 1 caro zoo  2312  2014-10-25 18:30 myfile.php
+> ~~~
+> 
+> Which of the following statements is true?
+> 
+> 1. caro (the owner) can read, write, and execute myfile.php
+> 2. caro (the owner) cannot write to myfile.php
+> 3. members of caro (a group) can read, write, and execute myfile.php
+> 4. members of zoo (a group) cannot execute myfile.php
 
-~~~
--rwxr-xr-- 1 caro zoo  2312  2014-10-25 18:30 myfile.php
-~~~
-
-Which of the following statements is true?
-
-1. caro (the owner) can read, write, and execute myfile.php
-2. caro (the owner) cannot write to myfile.php
-3. members of caro (a group) can read, write, and execute myfile.php
-4. members of zoo (a group) cannot execute myfile.php
-</div>

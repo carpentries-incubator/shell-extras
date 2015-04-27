@@ -1,6 +1,5 @@
 ---
-layout: lesson
-root: ../..
+layout: page
 title: Manual Pages
 ---
 We can get help for any Unix command with the `man`
@@ -8,10 +7,9 @@ We can get help for any Unix command with the `man`
 For example,
 here is the command to look up information on `cp`:
 
-~~~
+~~~ {.input}
 $ man cp
 ~~~
-{:class="in"}
 
 The output displayed is referred to as the "man page".
 
@@ -49,24 +47,22 @@ AUTHOR, REPORTING BUGS, COPYRIGHT, HISTORY, (known) BUGS, and COMPATIBILITY.
 
 Here is the is synopsis for the `cp` command on Ubuntu Linux:
 
-~~~
+~~~ {.output}
 SYNOPSIS
    cp [OPTION]... [-T] SOURCE DEST
    cp [OPTION]... SOURCE... DIRECTORY
    cp [OPTION]... -t DIRECTORY SOURCE...
 ~~~
-{:class="out"}
 
 This tells the reader that there are three ways to use the command.
 Let's look at the first usage:
 
-~~~
+~~~ {.output}
 cp [OPTION]... [-T] SOURCE DEST
 ~~~
-{:class="out"}
 
 `[OPTION]` means the `cp` command can be followed by
-one or more optional [flags](../../gloss.html#command).
+one or more optional [flags](./reference.html#command).
 We can tell they're optional because of the square brackets,
 and we can tell that one or more are welcome because of the ellipsis (...).
 For example,
@@ -87,7 +83,7 @@ Note that to use the last one, the `-t` option is mandatory
 The `DESCRIPTION` section starts with a few paragraphs explaining the command and its use,
 then expands on the possible options one by one:
 
-~~~
+~~~ {.output}
      The following options are available:
 
      -a    Same as -pPR options. Preserves structure and attributes of
@@ -103,7 +99,6 @@ then expands on the possible options one by one:
 
       ...  ...
 ~~~
-{:class="out"}
 
 #### Finding Help on Specific Options
 
@@ -118,11 +113,10 @@ After that,
 we can use the 'n' key to navigate to the next match
 until we find the detailed information we need:
 
-~~~
+~~~ {.output}
 -t, --target-directory=DIRECTORY
      copy all SOURCE arguments into DIRECTORY
 ~~~
-{:class="out"}
 
 This means that this option has the short form `-t` and the long form `--target-directory`
 and that it takes an argument.

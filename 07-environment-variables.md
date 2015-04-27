@@ -1,6 +1,5 @@
 ---
-layout: lesson
-root: ../..
+layout: page
 title: Shell Variables
 ---
 The shell is just a program, and like other programs, it has variables.
@@ -10,11 +9,10 @@ you can change how the shell and other programs behave.
 
 Let's start by running the command `set` and looking at some of the variables in a typical shell session:
 
-~~~
+~~~ {.input}
 $ set
 ~~~
-{:class="in"}
-~~~
+~~~ {.output}
 COMPUTERNAME=TURING
 HOME=/home/vlad
 HOMEDRIVE=C:
@@ -28,7 +26,6 @@ UID=1000
 USERNAME=vlad
 ...
 ~~~
-{:class="out"}
 
 As you can see, there are quite a few&mdash;in fact, four or five times more than what's shown here.
 And yes,
@@ -52,7 +49,7 @@ it's the program's responsibility to split the variable's string value into piec
 #### The `PATH` Variable
 
 Let's have a closer look at that `PATH` variable.
-Its value defines the shell's [search path](../../gloss.html#search-path),
+Its value defines the shell's [search path](./reference.html#search-path),
 i.e., the list of directories that the shell looks in for runnable programs
 when you type in a program name without specifying what directory it is in.
 
@@ -67,7 +64,7 @@ As soon as it finds a match, it stops searching and runs the program.
 To show how this works,
 here are the components of `PATH` listed one per line:
 
-~~~
+~~~ {.output}
 /Users/vlad/bin
 /usr/local/git/bin
 /usr/bin
@@ -76,7 +73,6 @@ here are the components of `PATH` listed one per line:
 /sbin
 /usr/local/bin
 ~~~
-{:class="out"}
 
 On our computer,
 there are actually three programs called `analyze`
@@ -94,27 +90,23 @@ since the directory `/users/vlad` isn't in `PATH`.
 
 Let's show the value of the variable `HOME`:
 
-~~~
+~~~ {.input}
 $ echo HOME
 ~~~
-{:class="in"}
-~~~
+~~~ {.output}
 HOME
 ~~~
-{:class="out"}
 
 That just prints "HOME", which isn't what we wanted
 (though it is what we actually asked for).
 Let's try this instead:
 
-~~~
+~~~ {.input}
 $ echo $HOME
 ~~~
-{:class="in"}
-~~~
+~~~ {.output}
 /home/vlad
 ~~~
-{:class="out"}
 
 The dollar sign tells the shell that we want the *value* of the variable
 rather than its name.
@@ -127,27 +119,23 @@ which displays the right thing.
 
 Creating a variable is easy&mdash;we just assign a value to a name using "=":
 
-~~~
+~~~ {.input}
 $ SECRET_IDENTITY=Dracula
 $ echo $SECRET_IDENTITY
 ~~~
-{:class="in"}
-~~~
+~~~ {.output}
 Dracula
 ~~~
-{:class="out"}
 
 To change the value, just assign a new one:
 
-~~~
+~~~ {.input}
 $ SECRET_IDENTITY=Camilla
 $ echo $SECRET_IDENTITY
 ~~~
-{:class="in"}
-~~~
+~~~ {.output}
 Camilla
 ~~~
-{:class="out"}
 
 If we want to set some variables automatically every time we run a shell,
 we can put commands to do this in a file called `.bashrc` in our home directory.
@@ -161,13 +149,11 @@ and is now just a convention everyone follows without understanding why.)
 For example,
 here are two lines in `/home/vlad/.bashrc`:
 
-<div class="file" markdown="1">
-~~~
+~~~ {.output}
 export SECRET_IDENTITY=Dracula
 export TEMP_DIR=/tmp
 export BACKUP_DIR=$TEMP_DIR/backup
 ~~~
-</div>
 
 These three lines create the variables `SECRET_IDENTITY`,
 `TEMP_DIR`,
@@ -182,11 +168,9 @@ it's also common to use the `alias` command to create shortcuts for things we fr
 For example, we can define the alias `backup`
 to run `/bin/zback` with a specific set of arguments:
 
-<div class="file" markdown="1">
-~~~
+~~~ {.input}
 alias backup=/bin/zback -v --nostir -R 20000 $HOME $BACKUP_DIR
 ~~~
-</div>
 
 As you can see,
 aliases can save us a lot of typing, and hence a lot of typing mistakes.
