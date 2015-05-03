@@ -26,6 +26,8 @@ You also agree to abide by our
     please see [the list of issues for this repository][lesson-issues],
     or for [our other lessons][swc-lessons].
     Comments on issues and reviews of pull requests are equally welcome.
+	
+5.	If you are working on a specific lesson page, please comment on the appropriate issue so we can minimize duplicating or conflicting contributions.  
 
 ## Other Resources
 
