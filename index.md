@@ -12,14 +12,14 @@ Software Carpentry's [Introduction to the Unix Shell](http://swcarpentry.github.
 
 ## Topics
 
-1. [Navigating man pages](00-man-pages.html)
-2. [Connecting to remote machines](01-ssh.html)
-3. [Transferring files](02-file-transfer.html)
-4. [File permissions](03-permissions.html)
-5. [Directory structure](04-directory-structure.html)
-6. [Job control](05-job-control.html)
-7. [Aliases and the bashrc](06-aliases.html)
-8. [Environment variables](07-environment-variables.html)
+1. [Navigating man pages](01-man-pages.html)
+2. [Connecting to remote machines](02-ssh.html)
+3. [Transferring files](03-file-transfer.html)
+4. [File permissions](04-permissions.html)
+5. [Directory structure](05-directory-structure.html)
+6. [Job control](06-job-control.html)
+7. [Aliases and the bashrc](07-aliases.html)
+8. [Environment variables](08-environment-variables.html)
 
 ## Other Resources
 
