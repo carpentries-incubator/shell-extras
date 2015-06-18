@@ -242,8 +242,11 @@ The key's randomart image is:
 
 The random art image is an alternate way to match keys but we won't be needing this.
 
-Now you need to send your public key to the server you want to connect. Display
-the contents of your new public key file with `cat`:
+Now you need to place a copy of your public key ony any servers you would
+like to use SSH to connect to, instead of logging in with a username and
+passwd.
+
+Display the contents of your new public key file with `cat`:
 
 ~~~ {.input}
 $ cat ~/.ssh/id_rsa.pub
@@ -252,8 +255,9 @@ $ cat ~/.ssh/id_rsa.pub
 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA879BJGYlPTLIuc9/R5MYiN4yc/YiCLcdBpSdzgK9Dt0Bkfe3rSz5cPm4wmehdE7GkVFXrBJ2YHqPLuM1yx1AUxIebpwlIl9f/aUHOts9eVnVh4NztPy0iSU/Sv0b2ODQQvcy2vYcujlorscl8JjAgfWsO3W4iGEe6QwBpVomcME8IU35v5VbylM9ORQa6wvZMVrPECBvwItTY8cPWH3MGZiK/74eHbSLKA4PY3gM4GHI450Nie16yggEg2aTQfWA1rry9JYWEoHS9pJ1dnLqZU3k/8OWgqJrilwSoC5rGjgp93iu0H8T6+mEHGRQe84Nk1y5lESSWIbn6P636Bl3uQ== your@email.com
 ~~~
 
-Copy the contents of the output. Login to the server you want to connect using
-your SSH keys.
+Copy the contents of the output.
+
+Login to the remote server with your username and password.
 
 ~~~ {.input}
 $ ssh vlad@moon.euphoric.edu
@@ -275,6 +279,105 @@ you setup your SSH key correctly you won't need to type your password.
 ~~~ {.input}
 $ ssh vlad@moon.euphoric.edu
 ~~~
+
+### SSH Files and Directories
+
+The example of copying our public key to a remote machine, so that it 
+can then be used when we next SSH into that remote machine, assumed
+that we already had a directory `~/.ssh/`.
+
+Whilst a remote server may support the use of SSH to login, your home
+directory there may not contain a `.ssh` directory by default.
+
+We have already seen that we can use SSH to run commands on remote
+machines, so we can ensure that everything is set up as required before
+we place the copy of our public key on a remote machine.
+
+Walk through this process allows to highlight some of the typical
+requirements of the SSH protocol itself, as documented in the man-page
+for the `ssh` command.
+
+Firstly, we check that we have a `.ssh/` directory on another remote
+machine, `comet`
+
+~~~ {.input}
+$ ssh vlad@comet "ls -ld ~/.ssh"
+Password: ********
+~~~
+~~~ {.output}
+    ls: cannot access /home/vlad/.ssh: No such file or directory
+~~~
+
+Oh dear! We should create the directory; and check that it's there (Note: two commands, seperated by a semi colon)
+
+~~~ {.input}
+$ ssh vlad@comet "mkdir ~/.ssh; ls -ld ~/.ssh"
+Password: ********
+~~~
+~~~ {.output}
+    drwxr-xr-x 2 vlad vlad 512 Jan 01 09:09 /home/vlad/.ssh
+~~~
+
+Now we have a dot-SSH directory, into which to place SSH-related
+files but we can see that the default permissions allow anyone to
+inspect the files within that directory.
+
+For a protocol that is supposed to be secure, this is not considered
+a good thing and so the recommended permissions are read/write/execute
+for the user, and not accessible by others.
+
+Let's alter the permissions on the directory
+
+~~~ {.input}
+$ ssh vlad@comet "chmod 700 ~/.ssh; ls -ld ~/.ssh"
+Password: ********
+~~~
+~~~ {.output}
+    drwx------ 2 vlad vlad 512 Jan 01 09:09 /home/vlad/.ssh
+~~~
+
+That's looks much better.
+
+In the above example, it was suggested that we paste the content of
+our public key at the end of `~/.ssh/authorized_keys`, however as
+we didn't have a `~/.ssh/` on this remote machine, we can simply
+copy our public key over as the initial `~/.ssh/authorized_keys`,
+and of course, we will use `scp` to do this, even though we don't
+yet have passwordless SSH access set up.
+
+~~~ {.input}
+$ scp ~/.ssh/id_rsa.pub vlad@comet:.ssh/authorized_keys"
+Password: ********
+~~~
+
+Note that the default target for the `scp` command on a remote
+machine is the home directory, so we have not needed to use the
+shorthand `~/.ssh/` or even the full path `/home/vlad/.ssh/` to 
+our home directory there.
+
+Checking the permissions of the file we have just created on
+the remote machine, also serves to indicate that we no longer
+need to use our password, because we now have what's needed
+to use SSH without it.
+
+~~~ {.input}
+$ ssh vlad@comet "ls -l ~/.ssh"
+~~~
+~~~ {.output}
+    -rw-r--r-- 2 vlad vlad 512 Jan 01 09:11 /home/vlad/.ssh/authorized_keys
+~~~
+
+Whilst the authorized keys file is not considered to be highly sensitive, 
+(after all, it contains public keys), we alter the permissions to match
+the man page's recommendations
+
+~~~ {.input}
+$ ssh vlad@comet "chmod go-r ~/.ssh/authorized_keys ; ls -l ~/.ssh"
+~~~
+~~~ {.output}
+    -rw------- 2 vlad vlad 512 Jan 01 09:11 /home/vlad/.ssh/authorized_keys
+~~~
+
 
 
 > ## Key Points  {.callout}
