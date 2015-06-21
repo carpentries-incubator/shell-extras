@@ -2,6 +2,11 @@
 layout: page
 title: Permissions
 ---
+
+> ## Learning Objectives {.objectives}
+> 
+> * FIXME
+
 Unix controls who can read, modify, and run files using *permissions*.
 We'll discuss how Windows handles permissions at the end of the section:
 the concepts are similar,
@@ -13,7 +18,7 @@ She has a unique [user name](./reference.html#user-name),
 and a [user ID](./reference.html#user-id),
 1404.
 
-> #### Why Integer IDs?
+> ## Why Integer IDs?{.callout}
 >
 > Why integers for IDs?
 > Again, the answer goes back to the early 1970s.
@@ -90,7 +95,7 @@ $ ls -F
 safety.txt    setup*     waiver.txt
 ~~~
 
-> #### Necessary But Not Sufficient
+> ## Necessary But Not Sufficient{.callout}
 >
 > The fact that something is marked as executable
 > doesn't actually mean it contains a program of some kind.
@@ -246,7 +251,7 @@ It gives someone the right to *traverse* the directory, but not to look at its c
 The distinction is subtle, so let's have a look at an example.
 Vlad's home directory has three subdirectories called `venus`, `mars`, and `pluto`:
 
-<img src="img/x-for-directories.svg" alt="Execute Permission for Directories" />
+![execute](fig/x-for-directories.svg "Execute Permission for Directories")
 
 Each of these has a subdirectory in turn called `notes`,
 and those sub-subdirectories contain various files.
@@ -281,7 +286,7 @@ but it's also more complex to administer and understand on small systems.
 Some modern variants of Unix support ACLs as well as the older read-write-execute permissions,
 but hardly anyone uses them.
 
-> ## Challenge {.callout}
+> ## Challenge {.challenge}
 > If `ls -l myfile.php` returns the following details:
 >
 > ~~~ {.output}
