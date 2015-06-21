@@ -2,6 +2,11 @@
 layout: page
 title: Manual Pages
 ---
+
+> ## Learning Objectives {.objectives}
+>
+> *   FIXME
+
 We can get help for any Unix command with the `man`
 (short for manual) command.
 For example,
@@ -132,7 +137,7 @@ If you can't find what you need in the man page&mdash;or you can't understand wh
 entering "unix command copy file" into your favorite search engine:
 it will often produce more helpful results.
 
-> #### You May Also Enjoy...
+> ## You May Also Enjoy...{.callout}
 >
 > The [explainshell.com](http://explainshell.com/) site
 > does a great job of breaking complex Unix commands into parts
