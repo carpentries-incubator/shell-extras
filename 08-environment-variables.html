@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Shell Variables</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">Shell Variables</h1>
+          
+<p>The shell is just a program, and like other programs, it has variables. Those variables control its execution, so by changing their values you can change how the shell and other programs behave.</p>
+<p>Let’s start by running the command <code>set</code> and looking at some of the variables in a typical shell session:</p>
+<pre class="input"><code>$ set</code></pre>
+<pre class="output"><code>COMPUTERNAME=TURING
+HOME=/home/vlad
+HOMEDRIVE=C:
+HOSTNAME=TURING
+HOSTTYPE=i686
+NUMBER_OF_PROCESSORS=4
+OS=Windows_NT
+PATH=/Users/vlad/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+PWD=/home/vlad
+UID=1000
+USERNAME=vlad
+...</code></pre>
+<p>As you can see, there are quite a few—in fact, four or five times more than what’s shown here. And yes, using <code>set</code> to <em>show</em> things might seem a little strange, even for Unix, but if you don’t give it any arguments, it might as well show you things you <em>could</em> set.</p>
+<p>Every variable has a name. By convention, variables that are always present are given upper-case names. All shell variables’ values are strings, even those (like <code>UID</code>) that look like numbers. It’s up to programs to convert these strings to other types when necessary. For example, if a program wanted to find out how many processors the computer had, it would convert the value of the <code>NUMBER_OF_PROCESSORS</code> variable from a string to an integer.</p>
+<p>Similarly, some variables (like <code>PATH</code>) store lists of values. In this case, the convention is to use a colon ‘:’ as a separator. If a program wants the individual elements of such a list, it’s the program’s responsibility to split the variable’s string value into pieces.</p>
+<h4 id="the-path-variable">The <code>PATH</code> Variable</h4>
+<p>Let’s have a closer look at that <code>PATH</code> variable. Its value defines the shell’s <a href="./reference.html#search-path">search path</a>, i.e., the list of directories that the shell looks in for runnable programs when you type in a program name without specifying what directory it is in.</p>
+<p>For example, when we type a command like <code>analyze</code>, the shell needs to decide whether to run <code>./analyze</code> or <code>/bin/analyze</code>. The rule it uses is simple: the shell checks each directory in the <code>PATH</code> variable in turn, looking for a program with the requested name in that directory. As soon as it finds a match, it stops searching and runs the program.</p>
+<p>To show how this works, here are the components of <code>PATH</code> listed one per line:</p>
+<pre class="output"><code>/Users/vlad/bin
+/usr/local/git/bin
+/usr/bin
+/bin
+/usr/sbin
+/sbin
+/usr/local/bin</code></pre>
+<p>On our computer, there are actually three programs called <code>analyze</code> in three different directories: <code>/bin/analyze</code>, <code>/usr/local/bin/analyze</code>, and <code>/users/vlad/analyze</code>. Since the shell searches the directories in the order they’re listed in <code>PATH</code>, it finds <code>/bin/analyze</code> first and runs that. Notice that it will <em>never</em> find the program <code>/users/vlad/analyze</code> unless we type in the full path to the program, since the directory <code>/users/vlad</code> isn’t in <code>PATH</code>.</p>
+<h4 id="showing-the-value-of-a-variable">Showing the Value of a Variable</h4>
+<p>Let’s show the value of the variable <code>HOME</code>:</p>
+<pre class="input"><code>$ echo HOME</code></pre>
+<pre class="output"><code>HOME</code></pre>
+<p>That just prints “HOME”, which isn’t what we wanted (though it is what we actually asked for). Let’s try this instead:</p>
+<pre class="input"><code>$ echo $HOME</code></pre>
+<pre class="output"><code>/home/vlad</code></pre>
+<p>The dollar sign tells the shell that we want the <em>value</em> of the variable rather than its name. This works just like wildcards: the shell does the replacement <em>before</em> running the program we’ve asked for. Thanks to this expansion, what we actually run is <code>echo /home/vlad</code>, which displays the right thing.</p>
+<h4 id="creating-and-changing-variables">Creating and Changing Variables</h4>
+<p>Creating a variable is easy—we just assign a value to a name using “=”:</p>
+<pre class="input"><code>$ SECRET_IDENTITY=Dracula
+$ echo $SECRET_IDENTITY</code></pre>
+<pre class="output"><code>Dracula</code></pre>
+<p>To change the value, just assign a new one:</p>
+<pre class="input"><code>$ SECRET_IDENTITY=Camilla
+$ echo $SECRET_IDENTITY</code></pre>
+<pre class="output"><code>Camilla</code></pre>
+<p>If we want to set some variables automatically every time we run a shell, we can put commands to do this in a file called <code>.bashrc</code> in our home directory. (The ‘.’ character at the front prevents <code>ls</code> from listing this file unless we specifically ask it to using <code>-a</code>: we normally don’t want to worry about it. The “rc” at the end is an abbreviation for “run control”, which meant something really important decades ago, and is now just a convention everyone follows without understanding why.)</p>
+<p>For example, here are two lines in <code>/home/vlad/.bashrc</code>:</p>
+<pre class="output"><code>export SECRET_IDENTITY=Dracula
+export TEMP_DIR=/tmp
+export BACKUP_DIR=$TEMP_DIR/backup</code></pre>
+<p>These three lines create the variables <code>SECRET_IDENTITY</code>, <code>TEMP_DIR</code>, and <code>BACKUP_DIR</code>, and export them so that any programs the shell runs can see them as well. Notice that <code>BACKUP_DIR</code>’s definition relies on the value of <code>TEMP_DIR</code>, so that if we change where we put temporary files, our backups will be relocated automatically.</p>
+<p>While we’re here, it’s also common to use the <code>alias</code> command to create shortcuts for things we frequently type. For example, we can define the alias <code>backup</code> to run <code>/bin/zback</code> with a specific set of arguments:</p>
+<pre class="input"><code>alias backup=/bin/zback -v --nostir -R 20000 $HOME $BACKUP_DIR</code></pre>
+<p>As you can see, aliases can save us a lot of typing, and hence a lot of typing mistakes. You can find interesting suggestions for other aliases and other bash tricks by searching for “sample bashrc” in your favorite search engine.</p>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/shell-extras">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

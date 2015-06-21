@@ -23,15 +23,16 @@
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
+      <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <h1 class="title">Manual Pages</h1>
           
 <p>We can get help for any Unix command with the <code>man</code> (short for manual) command. For example, here is the command to look up information on <code>cp</code>:</p>
 <pre class="input"><code>$ man cp</code></pre>
-<p>The output displayed is referred to as the &quot;man page&quot;.</p>
-<p>The man page will be displayed in the default file viewer for our shell, which usually a program called <code>more</code>. When <code>more</code> displays a colon ':', we can press the space bar to get the next page, the letter 'h' to get help, or the letter 'q' to quit.</p>
-<p><code>man</code>'s output is typically complete but concise, as it is designed to be used as a reference rather than a tutorial. Most man pages are divided into sections:</p>
+<p>The output displayed is referred to as the “man page”.</p>
+<p>The man page will be displayed in the default file viewer for our shell, which usually a program called <code>more</code>. When <code>more</code> displays a colon ‘:’, we can press the space bar to get the next page, the letter ‘h’ to get help, or the letter ‘q’ to quit.</p>
+<p><code>man</code>’s output is typically complete but concise, as it is designed to be used as a reference rather than a tutorial. Most man pages are divided into sections:</p>
 <ul>
 <li>NAME: gives the name of the command and a brief description</li>
 <li>SYNOPSIS: how to run the command, including optional and mandatory parameters. (We will explain the syntax later.)</li>
@@ -46,11 +47,11 @@
    cp [OPTION]... [-T] SOURCE DEST
    cp [OPTION]... SOURCE... DIRECTORY
    cp [OPTION]... -t DIRECTORY SOURCE...</code></pre>
-<p>This tells the reader that there are three ways to use the command. Let's look at the first usage:</p>
+<p>This tells the reader that there are three ways to use the command. Let’s look at the first usage:</p>
 <pre class="output"><code>cp [OPTION]... [-T] SOURCE DEST</code></pre>
-<p><code>[OPTION]</code> means the <code>cp</code> command can be followed by one or more optional <a href="./reference.html#command">flags</a>. We can tell they're optional because of the square brackets, and we can tell that one or more are welcome because of the ellipsis (...). For example, the fact that <code>[-T]</code> is in square brackets, but after the ellipsis, means that it's optional, but if it's used, it must come after all the other options.</p>
+<p><code>[OPTION]</code> means the <code>cp</code> command can be followed by one or more optional <a href="./reference.html#command">flags</a>. We can tell they’re optional because of the square brackets, and we can tell that one or more are welcome because of the ellipsis (…). For example, the fact that <code>[-T]</code> is in square brackets, but after the ellipsis, means that it’s optional, but if it’s used, it must come after all the other options.</p>
 <p><code>SOURCE</code> refers to the source file or directory, and <code>DEST</code> to the destination file or directory. Their precise meanings are explained at the top of the <code>DESCRIPTION</code> section.</p>
-<p>The other two usage examples can be read in similar ways. Note that to use the last one, the <code>-t</code> option is mandatory (because it isn't shown in square brackets).</p>
+<p>The other two usage examples can be read in similar ways. Note that to use the last one, the <code>-t</code> option is mandatory (because it isn’t shown in square brackets).</p>
 <p>The <code>DESCRIPTION</code> section starts with a few paragraphs explaining the command and its use, then expands on the possible options one by one:</p>
 <pre class="output"><code>     The following options are available:
 
@@ -67,18 +68,19 @@
 
       ...  ...</code></pre>
 <h4 id="finding-help-on-specific-options">Finding Help on Specific Options</h4>
-<p>If we want to skip ahead to the option you're interested in, we can search for it using the slash key '/'. (This isn't part of the <code>man</code> command: it's a feature of <code>more</code>.) For example, to find out about <code>-t</code>, we can type <code>/-t</code> and press return. After that, we can use the 'n' key to navigate to the next match until we find the detailed information we need:</p>
+<p>If we want to skip ahead to the option you’re interested in, we can search for it using the slash key ‘/’. (This isn’t part of the <code>man</code> command: it’s a feature of <code>more</code>.) For example, to find out about <code>-t</code>, we can type <code>/-t</code> and press return. After that, we can use the ‘n’ key to navigate to the next match until we find the detailed information we need:</p>
 <pre class="output"><code>-t, --target-directory=DIRECTORY
      copy all SOURCE arguments into DIRECTORY</code></pre>
 <p>This means that this option has the short form <code>-t</code> and the long form <code>--target-directory</code> and that it takes an argument. Its meaning is to copy all the SOURCE arguments into DIRECTORY. Thus, we can give the destination explicitly instead of relying on having to place the directory at the end.</p>
 <h4 id="limitations-of-man-pages">Limitations of Man Pages</h4>
-<p>Man pages can be useful for a quick confirmation of how to run a command, but they are not famous for being readable. If you can't find what you need in the man page—or you can't understand what you've found—try entering &quot;unix command copy file&quot; into your favorite search engine: it will often produce more helpful results.</p>
+<p>Man pages can be useful for a quick confirmation of how to run a command, but they are not famous for being readable. If you can’t find what you need in the man page—or you can’t understand what you’ve found—try entering “unix command copy file” into your favorite search engine: it will often produce more helpful results.</p>
 <blockquote>
-<h4 id="you-may-also-enjoy...">You May Also Enjoy...</h4>
-<p>The <a href="http://explainshell.com/">explainshell.com</a> site does a great job of breaking complex Unix commands into parts and explaining what each does. Sadly, it doesn't work in reverse...</p>
+<h4>You May Also Enjoy…</h4>
+<p>The <a href="http://explainshell.com/">explainshell.com</a> site does a great job of breaking complex Unix commands into parts and explaining what each does. Sadly, it doesn’t work in reverse…</p>
 </blockquote>
         </div>
       </div>
+      </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="https://github.com/swcarpentry/shell-extras">Source</a>
