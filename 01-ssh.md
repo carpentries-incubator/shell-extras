@@ -111,7 +111,7 @@ It uses several sophisticated, and heavily tested, encryption protocols
 to ensure that outsiders can't see what's in the messages
 going back and forth between different computers.
 
-The "secure" version of `rsh`, called `ssh` has a companion program called `scp`,
+The "secure" version of `rsh`, called `ssh`, think (`s`)ecure `sh`, has a companion program, (`s`)ecure `cp`, called `scp`,
 which 
 allows us to copy files to or from a remote computer using the same kind of encrypted connection as SSH.
 
