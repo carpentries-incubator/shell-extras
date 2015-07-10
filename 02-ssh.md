@@ -4,11 +4,12 @@ title: Working Remotely
 ---
 > ## Learning Objectives  {.objectives}
 >
-> *   Learn SSH and SCP to work remotely
+> *   Learn what SSH is
 > *   Learn what an SSH key is
 > *   Generate your own SSH key pair
-> *   Add your SSH key to an remote server
 > *   Learn how to use your SSH key
+> *   Learn how to work remotely using 'ssh' and 'scp'
+> *   Add your SSH key to an remote server
 
 Let's take a closer look at what happens when we use the shell
 on a desktop or laptop computer.
