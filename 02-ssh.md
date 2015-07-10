@@ -93,25 +93,26 @@ $ pwd
 /users/vlad
 ~~~
 
-The secure shell is called "secure" to contrast it with an older program called `rsh`,
-which stood for "remote shell".
+### SSH History
+
 Back in the day,
 when everyone trusted each other and knew every chip in their computer by its first name,
-people didn't encrypt anything except the most sensitive information when sending it over a network.
-However,
-that meant that villains could watch network traffic,
+people didn't encrypt anything except the most sensitive information when sending it over a network
+and the two programs used for running a shell (usually back then, the Bourne Shell, `sh`) on, or copying
+files to, a remote machine were named `rsh` and `rcp`, respectively. Think (`r`)emote `sh` and `cp`
+
+However, anyone could watch the unencrypted network traffic, which meant that villains could
 steal usernames and passwords,
 and use them for all manner of nefarious purposes.
+
 SSH was invented to prevent this (or at least slow it down).
 It uses several sophisticated, and heavily tested, encryption protocols
 to ensure that outsiders can't see what's in the messages
 going back and forth between different computers.
 
-`ssh` has a companion program called `scp`,
-which stands for "secure copy".
-It allows us to copy files to or from a remote computer using the same kind of connection as SSH.
-The command's name combines `cp`'s and `ssh`'s,
-and so does its operation.
+The "secure" version of `rsh`, called `ssh`, think (`s`)ecure `sh`, has a companion program, (`s`)ecure `cp`, called `scp`,
+which allows us to copy files to or from a remote computer using the same kind of encrypted connection as SSH.
+
 To copy a file,
 we specify the source and destination paths,
 either of which may include computer names.
@@ -129,8 +130,37 @@ Password: ********
 results.dat              100%  9  1.0 MB/s 00:00
 ~~~
 
-Copying a whole directory is similar:
-we just use the `-r` option to signal that we want copying to be recursive.
+Note the colon `:`, seperating the hostname of the server and the pathname of 
+the file we are copying to.
+It is this character that informs `scp` that the source or target of the copy is
+on the remote machine and the reason it is needed can be explained as follows:
+
+In the same way that the default directory into which we are placed when running
+a shell on a remote machine is our home directory on that machine, the default
+target, for a remote copy, is also the  home directory.
+
+This means that 
+
+~~~ {.input}
+$ scp results.dat vlad@backupserver:
+~~~
+
+would copy `results.dat` into our home directory on `backupserver`, however, if we did not
+have the colon to inform `scp` of the remote machine, we would still have a valid commmad
+
+~~~ {.input}
+$ scp results.dat vlad@backupserver
+~~~
+
+but now we have merely created a file called `vlad@backupserver` on our local machine,
+as we would have done with `cp`.
+
+~~~ {.input}
+$ cp results.dat vlad@backupserver
+~~~
+
+Copying a whole directory betwen remote machines uses the same syntax as the `cp` command:
+we just use the `-r` option to signal that we want copying to be recursively.
 For example,
 this command copies all of our results from the backup server to our laptop:
 
