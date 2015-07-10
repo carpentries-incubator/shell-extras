@@ -324,7 +324,7 @@ We have already seen that we can use SSH to run commands on remote
 machines, so we can ensure that everything is set up as required before
 we place the copy of our public key on a remote machine.
 
-Walk through this process allows to highlight some of the typical
+Walking through this process allows us to highlight some of the typical
 requirements of the SSH protocol itself, as documented in the man-page
 for the `ssh` command.
 

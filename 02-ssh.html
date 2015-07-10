@@ -143,7 +143,7 @@ Password: ********</code></pre>
 <p>The example of copying our public key to a remote machine, so that it can then be used when we next SSH into that remote machine, assumed that we already had a directory <code>~/.ssh/</code>.</p>
 <p>Whilst a remote server may support the use of SSH to login, your home directory there may not contain a <code>.ssh</code> directory by default.</p>
 <p>We have already seen that we can use SSH to run commands on remote machines, so we can ensure that everything is set up as required before we place the copy of our public key on a remote machine.</p>
-<p>Walk through this process allows to highlight some of the typical requirements of the SSH protocol itself, as documented in the man-page for the <code>ssh</code> command.</p>
+<p>Walking through this process allows us to highlight some of the typical requirements of the SSH protocol itself, as documented in the man-page for the <code>ssh</code> command.</p>
 <p>Firstly, we check that we have a <code>.ssh/</code> directory on another remote machine, <code>comet</code></p>
 <pre class="input"><code>$ ssh vlad@comet &quot;ls -ld ~/.ssh&quot;
 Password: ********</code></pre>
