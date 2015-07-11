@@ -8,7 +8,7 @@ title: Working Remotely
 > *   Learn what an SSH key is
 > *   Generate your own SSH key pair
 > *   Learn how to use your SSH key
-> *   Learn how to work remotely using 'ssh' and 'scp'
+> *   Learn how to work remotely using `ssh` and `scp`
 > *   Add your SSH key to an remote server
 
 Let's take a closer look at what happens when we use the shell
@@ -31,22 +31,58 @@ What if we want to run some commands on another machine,
 such as the server in the basement that manages our database of experimental results?
 To do this,
 we have to first log in to that machine.
-We call this a [remote login](./reference.html#remote-login),
-and the other computer a remote computer.
-Once we do this,
-everything we type is passed to a shell running on the remote computer.
-That shell runs those commands on our behalf,
-just as a local shell would,
-then sends back output for our computer to display.
+We call this a [remote login](./reference.html#remote-login).
 
-The tool we use to log in remotely is the [secure shell](./reference.html#secure-shell),
-or SSH.
-In particular, the command `ssh username@computer`
-runs SSH and connects to the remote computer we have specified.
+In order for us to be able to login, the remote computer must be runing 
+a [remote login server](./reference.html#remote-login-server) and we will
+run a client program that can talk to that server.
+The client program passes our login credentials to the remote login server
+and, if we are allowed to login, that server then runs a shell for us on the 
+remote computer.
+
+Once our local client is connected to the remote server,
+everything we type into the client is passed on, by the server, to the shell 
+running on the remote computer.
+That remote shell runs those commands on our behalf,
+just as a local shell would,
+then sends back output, via the server, to our client, for our computer to display.
+
+### SSH History
+
+Back in the day,
+when everyone trusted each other and knew every chip in their computer by its first name,
+people didn't encrypt anything except the most sensitive information when sending it over a network
+and the two programs used for running a shell (usually back then, the Bourne Shell, `sh`) on, or copying
+files to, a remote machine were named `rsh` and `rcp`, respectively. Think (`r`)emote `sh` and `cp`
+
+However, anyone could watch the unencrypted network traffic, which meant that villains could
+steal usernames and passwords,
+and use them for all manner of nefarious purposes.
+
+The [SSH protocol](./reference.html#ssh-protocol) was invented to prevent this (or at least slow it down).
+It uses several sophisticated, and heavily tested, encryption protocols
+to ensure that outsiders can't see what's in the messages
+going back and forth between different computers.
+
+The remote login server which accepts connections from client programs is known as the [SSH daemon](./reference.html#ssh-daemon), or `sshd`.
+
+The client program we use to login remotely is the [secure shell](./reference.html#secure-shell),
+or `ssh`, think (`s`)ecure `sh`. 
+
+The `ssh` login client has a companion program called `scp`, think  (`s`)ecure `cp`, 
+which allows us to copy files to or from a remote computer using the same kind of encrypted connection.
+
+
+### A remote login using `ssh`
+
+To make a remote login, we issue the command `ssh username@computer` 
+which tries to make a connection to the SSH daemon running on the remote computer we have specified.
+
 After we log in,
 we can use the remote shell to use the remote computer's files and directories.
+
 Typing `exit` or Control-D
-terminates the remote shell and returns us to our previous shell.
+terminates the remote shell, and the local client program, and returns us to our previous shell.
 
 In the example below,
 the remote machine's command prompt is `moon>`
@@ -94,25 +130,8 @@ $ pwd
 /users/vlad
 ~~~
 
-### SSH History
 
-Back in the day,
-when everyone trusted each other and knew every chip in their computer by its first name,
-people didn't encrypt anything except the most sensitive information when sending it over a network
-and the two programs used for running a shell (usually back then, the Bourne Shell, `sh`) on, or copying
-files to, a remote machine were named `rsh` and `rcp`, respectively. Think (`r`)emote `sh` and `cp`
-
-However, anyone could watch the unencrypted network traffic, which meant that villains could
-steal usernames and passwords,
-and use them for all manner of nefarious purposes.
-
-SSH was invented to prevent this (or at least slow it down).
-It uses several sophisticated, and heavily tested, encryption protocols
-to ensure that outsiders can't see what's in the messages
-going back and forth between different computers.
-
-The "secure" version of `rsh`, called `ssh`, think (`s`)ecure `sh`, has a companion program, (`s`)ecure `cp`, called `scp`,
-which allows us to copy files to or from a remote computer using the same kind of encrypted connection as SSH.
+### Copying files to, and from a remote machine using `scp`
 
 To copy a file,
 we specify the source and destination paths,
@@ -176,7 +195,9 @@ results-2011-10-28.dat              100%  8  1.0 MB/s 00:00
 results-2011-11-11.dat              100%  9  1.0 MB/s 00:00
 ~~~
 
-Here's one more thing SSH can do for us.
+### Running commands on a remote machine using `ssh`
+
+Here's one more thing the `ssh` client program can do for us.
 Suppose we want to check whether we have already created the file
 `backups/results-2011-11-12.dat` on the backup server.
 Instead of logging in and then typing `ls`,
@@ -191,7 +212,7 @@ results-2011-09-18.dat  results-2011-10-28.dat
 results-2011-10-04.dat  results-2011-11-11.dat
 ~~~
 
-SSH takes the argument after our remote username
+Here, `ssh` takes the argument after our remote username
 and passes them to the shell on the remote computer.
 (We have to put quotes around it to make it look like a single argument.)
 Since those arguments are a legal command,
