@@ -2,13 +2,16 @@
 
 for file in $1
 do
+    echo "Processing $file"
+    # set variables for loop
     counter=0
     total=`wc -l $file | cut -b -8`
+    #loop through file lines, doing analysis
     while read line
     do
         counter=$((counter+1))
         echo "Processing line $counter out of $total"
         echo $line >> $file.analysis
-        sleep 15
+        sleep 180
     done <$file
 done
