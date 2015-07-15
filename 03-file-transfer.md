@@ -2,7 +2,7 @@
 layout: page
 title: Extra Unix Shell Material
 subtitle: Transferring files
-minutes: 5
+minutes: 10
 ---
 > ## Learning Objectives {.objectives}
 >
@@ -135,16 +135,16 @@ Please refer to the man pages by typing `man wget`, `man curl`, and `man html2te
 
 Another option is lftp. It has a lot of capability, and even does simple bitorrent. 
 
-If we want to retrieve `03-review.html` on the website and save it with the filename `03-review.html` locally:
+If we want to retrieve `03-file-transfer.html` on the website and save it with the filename `03-file-transfer.html` locally:
 
 ~~~{.bash}
-$ lftp -c get http://software-carpentry.org/v5/novice/extras/03-review.html
+$ lftp -c get http://swcarpentry.github.io/shell-extras/03-file-transfer.html
 ~~~
 
-If we want to print `03-review.html` to the screen instead:
+If we want to print `03-file-transfer.html` to the screen instead:
 
 ~~~{.bash}
-$ lftp -c cat http://software-carpentry.org/v5/novice/extras/03-review.html
+$ lftp -c cat http://swcarpentry.github.io/shell-extras/03-file-transfer.html
 ~~~
 
 To obtain retrive all of the files with a particular extension in a directory we can type:
