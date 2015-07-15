@@ -1,0 +1,14 @@
+#!/bin/bash
+
+for file in $1
+do
+    counter=0
+    total=`wc -l $file | cut -b -8`
+    while read line
+    do
+        counter=$((counter+1))
+        echo "Processing line $counter out of $total"
+        echo $line >> $file.analysis
+        sleep 15
+    done <$file
+done
