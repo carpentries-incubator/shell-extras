@@ -1,14 +1,14 @@
 ---
 layout: page
 title: The Unix Shell
-subtitle: Backticks
+subtitle: Command Subsitution
 minutes: 15
 ---
 > ## Learning Objectives {.objectives}
 >
 > * Understand the need for flexibility regarding arguments
 > * Generate the values of the arguments on the fly using command substitution
-> * Understand the difference between pipes/redirection, and the backtick operator
+> * Understand the difference between pipes/redirection, and the command substitution operator
 
 ## Introduction
 
@@ -75,24 +75,32 @@ This would be more general, more flexible and more tractable than
 relying on the wildcard mechanism. What we need, therefore, is a
 mechanism that actually replaces everytying beween `[` and `]` with the
 desired names of input files, just before the loop starts.  Thankfully,
-this mechanism exists, and it is called the **backtick operator**, also
-known as **command substitution**. It looks much like the previous snippet:
+this mechanism exists, and it is called the **command substitution operator**
+(previously written using as the **backticks operator**). It looks much like the previous snippet:
 
 ~~~ {.bash}
 # (actual syntax)
-$ for file in `cat cohort2010.txt`
+$ for file in $(cat cohort2010.txt)
 > do
 >    run_classifier.sh --input $file --pvalue -0.05 --output $file.results
 > done
 ~~~
 
-It works simply as follows: everything between the backticks is executed
-as a Unix command, and the command's standard output replaces the
-backticks, and everything between it, before the loop starts (for
-convenience, newlines are also replaced with simple spaces).  *Note*: do
-not confuse the backtick, `` ` ``, with the single quote `'`.
+It works simply as follows: everything between the `$(` and the `)` is
+executed as a Unix command, and the command's standard output replaces
+everything from `$(` up to and including `)`, just before the loop
+starts.  For convenience, newlines in the commands' output are 
+replaced with simple spaces.
 
-Recall from the *Pipes and Filters* topic that `cat` prints the contents
+## Backtick operator
+In legacy code, you will often see the same construct but with a
+different syntax. It starts and ends with backticks, `` ` `` (not to be
+confused with the single quote `'` !).  The backticks work exactly the
+same as the command substitution done by `$(` and `)`. However its use
+is discouraged as backticks cannot be nested.
+
+## Example
+OK. Recall from the *Pipes and Filters* topic that `cat` prints the contents
 of its argument (a filename) to standard output. So, if the contents of
 file `cohort2010.txt` look like
 
@@ -109,7 +117,7 @@ patient1820757.txt
 then the construct
 
 ~~~
-$ for file in `cat cohort2010.txt`
+$ for file in $(cat cohort2010.txt)
 > do
 >     ...
 > done
@@ -124,9 +132,9 @@ $ for file in patient1033130.txt patient1048338.txt patient7448262.txt ... patie
 > done
 ~~~
 
-(notice the convenience of newlines being replaced with simple spaces here).
+(notice the convenience of newlines having been replaced with simple spaces).
 
-This example uses `` `cat somefilename` `` to supply arguments to the
+This example uses `` $(cat somefilename) `` to supply arguments to the
 `for variable in ... do ... done`-construct, but any output from any
 command, or even pipeline, can also be used. For example, if
 `cohort2010.txt` contains a few thousand patients but you just want to
@@ -134,7 +142,7 @@ try the first two for a test run, you can use the `head` command to just
 get the first few lines of its argument, like so:
 
 ~~~ {.bash}
-$ for file in `cat cohort2010.txt | head -n 2 `
+$ for file in $(cat cohort2010.txt | head -n 2) `
 > do
 >     ...
 > done
@@ -152,7 +160,7 @@ $ for file in patient1033130.txt patient1048338.txt
 simply because `cat cohort2010.txt | head -n 2` produces
 `patient1033130.txt patient1048338.txt` after the command substitution.
 
-Everything between the backticks is executed verbatim by the shell, so
+Everything between the `$(` and `)` is executed verbatim by the shell, so
 also the `-n 2` argument to the `head` command works as expected.
 
 ### **Important**
@@ -176,9 +184,9 @@ loops.
 > qualitycontrol --inputdir /data/incoming/  --output qcresults-[INSERT TIMESTAMP HERE].txt
 > ~~~
 > 
-> Getting `[INSERT TIMESTAMP HERE]` to work is a job for the backtick
+> Getting `[INSERT TIMESTAMP HERE]` to work is a job for the command subsitution
 > operator. The Unix command you need here is the `date` command, which provides you
-> with the current date and time; try it. 
+> with the current date and time (try it).
 > 
 > In the current form, its output is less useful for generating filenames
 > because it contains whitespace (which, as we know from now, should
@@ -189,20 +197,14 @@ loops.
 > $ date +"%Y-%m-%d_%T"
 > ~~~
 > 
-> (Try it!).
+> (Try it).
 > 
 > Write the command that will copy a file of your choice to a new file
 > whose name contains the time stamp. Test it by executing the command a
 > few times, waiting a few seconds between invocations (use the arrow-up
 > key to avoid having to retype the command)
-<!-- solution: cp file file.`date +"%Y-%m-%d_%T"` -->
+<!-- solution: cp file file.$(date +"%Y-%m-%d_%T") -->
 
-
-## Command subsitution {.callout}
-> Most users know and love the backtick operator in the form shown
-> here, but recommended practice is to preferably use the newer, more
-> general `$(command)` form, rather than the older `` `command` ``
-> The advantage of the new syntax is that it can be nested.
 
 ## Juggling filename extensions {.challenge}
 
@@ -224,21 +226,25 @@ loops.
 > patient1048338
 > ~~~
 >
-> Write a loop that uses the backtick operator and the `basename` command to sort each of the `*.pdb` files
-> into a corresponding `*.sorted` file. That is, make the loop do the following:
+>
+> Write a loop that uses the command substitution operator and the
+> `basename` command to sort each of the `*.pdb` files into a
+> corresponding `*.sorted` file. That is, make the loop do the
+> following:
+>
 > ~~~
 > $ sort ammonia.pdb > ammonia.sorted
 > ~~~
 > but for *each* of the `.pdb`-files.
-<!-- solution: for file in *.pdb; do sort $file > `basename $file .pdb`.sorted; done -->
+<!-- solution: for file in *.pdb; do sort $file > $(basename $file .pdb).sorted; done -->
 
 ## Closing remarks
 
-The backtick (or command subsitution) operator provides us with a
+The command subsitution operator provides us with a
 powerful new piece of 'plumbing' that allows us to connect "small
-pieces, loosely together" to keep with the Unix philosophy.  It is a
-little bit similar to the `|` operator in the sense that it connects two
+pieces, loosely together" to keep with the Unix philosophy.  It is remotely
+similar to the `|` operator in the sense that it connects two
 programs. But there is also a clear difference: `|` connects the
 standard output of one command to the standard input of another command,
-where as `` `command` `` is substituted 'in-place' into the the shell
+where as `` $(command) `` is substituted 'in-place' into the the shell
 script, and always provides parameters, options, arguments to other commands.
