@@ -76,7 +76,7 @@ relying on the wildcard mechanism. What we need, therefore, is a
 mechanism that actually replaces everytying beween `[` and `]` with the
 desired names of input files, just before the loop starts.  Thankfully,
 this mechanism exists, and it is called the **command substitution operator**
-(previously written using as the **backticks operator**). It looks much like the previous snippet:
+(previously written using the **backtick operator**). It looks much like the previous snippet:
 
 ~~~ {.bash}
 # (actual syntax)
@@ -89,11 +89,11 @@ $ for file in $(cat cohort2010.txt)
 It works simply as follows: everything between the `$(` and the `)` is
 executed as a Unix command, and the command's standard output replaces
 everything from `$(` up to and including `)`, just before the loop
-starts.  For convenience, newlines in the commands' output are 
+starts.  For convenience, newlines in the command's output are 
 replaced with simple spaces.
 
-## Backtick operator
-In legacy code, you will often see the same construct but with a
+### Backtick operator
+In legacy code, you may see the same construct but with a
 different syntax. It starts and ends with backticks, `` ` `` (not to be
 confused with the single quote `'` !).  The backticks work exactly the
 same as the command substitution done by `$(` and `)`. However its use
@@ -142,7 +142,7 @@ try the first two for a test run, you can use the `head` command to just
 get the first few lines of its argument, like so:
 
 ~~~ {.bash}
-$ for file in $(cat cohort2010.txt | head -n 2) `
+$ for file in $(cat cohort2010.txt | head -n 2)
 > do
 >     ...
 > done
