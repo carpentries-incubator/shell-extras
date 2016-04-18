@@ -296,7 +296,7 @@ The random art image is an alternate way to match keys but we won't be needing t
 
 Now you need to place a copy of your public key ony any servers you would
 like to use SSH to connect to, instead of logging in with a username and
-passwd.
+password.
 
 Display the contents of your new public key file with `cat`:
 
