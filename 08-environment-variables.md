@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Shell Variables
+subtitle: Shell Variables
 ---
 The shell is just a program, and like other programs, it has variables.
 Those variables control its execution,
@@ -9,10 +9,11 @@ you can change how the shell and other programs behave.
 
 Let's start by running the command `set` and looking at some of the variables in a typical shell session:
 
-~~~ {.input}
+~~~
 $ set
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 COMPUTERNAME=TURING
 HOME=/home/vlad
 HOMEDRIVE=C:
@@ -26,6 +27,7 @@ UID=1000
 USERNAME=vlad
 ...
 ~~~
+{: .output}
 
 As you can see, there are quite a few&mdash;in fact, four or five times more than what's shown here.
 And yes,
@@ -64,7 +66,7 @@ As soon as it finds a match, it stops searching and runs the program.
 To show how this works,
 here are the components of `PATH` listed one per line:
 
-~~~ {.output}
+~~~
 /Users/vlad/bin
 /usr/local/git/bin
 /usr/bin
@@ -73,6 +75,7 @@ here are the components of `PATH` listed one per line:
 /sbin
 /usr/local/bin
 ~~~
+{: .output}
 
 On our computer,
 there are actually three programs called `analyze`
@@ -90,23 +93,27 @@ since the directory `/users/vlad` isn't in `PATH`.
 
 Let's show the value of the variable `HOME`:
 
-~~~ {.input}
+~~~
 $ echo HOME
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 HOME
 ~~~
+{: .output}
 
 That just prints "HOME", which isn't what we wanted
 (though it is what we actually asked for).
 Let's try this instead:
 
-~~~ {.input}
+~~~
 $ echo $HOME
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 /home/vlad
 ~~~
+{: .output}
 
 The dollar sign tells the shell that we want the *value* of the variable
 rather than its name.
@@ -119,23 +126,27 @@ which displays the right thing.
 
 Creating a variable is easy&mdash;we just assign a value to a name using "=":
 
-~~~ {.input}
+~~~
 $ SECRET_IDENTITY=Dracula
 $ echo $SECRET_IDENTITY
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 Dracula
 ~~~
+{: .output}
 
 To change the value, just assign a new one:
 
-~~~ {.input}
+~~~
 $ SECRET_IDENTITY=Camilla
 $ echo $SECRET_IDENTITY
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 Camilla
 ~~~
+{: .output}
 
 If we want to set some variables automatically every time we run a shell,
 we can put commands to do this in a file called `.bashrc` in our home directory.
@@ -149,11 +160,12 @@ and is now just a convention everyone follows without understanding why.)
 For example,
 here are two lines in `/home/vlad/.bashrc`:
 
-~~~ {.output}
+~~~
 export SECRET_IDENTITY=Dracula
 export TEMP_DIR=/tmp
 export BACKUP_DIR=$TEMP_DIR/backup
 ~~~
+{: .output}
 
 These three lines create the variables `SECRET_IDENTITY`,
 `TEMP_DIR`,
@@ -168,9 +180,10 @@ it's also common to use the `alias` command to create shortcuts for things we fr
 For example, we can define the alias `backup`
 to run `/bin/zback` with a specific set of arguments:
 
-~~~ {.input}
+~~~
 alias backup=/bin/zback -v --nostir -R 20000 $HOME $BACKUP_DIR
 ~~~
+{: .input}
 
 As you can see,
 aliases can save us a lot of typing, and hence a lot of typing mistakes.
