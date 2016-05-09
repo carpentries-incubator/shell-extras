@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Extra Unix Shell Material
 subtitle: Job control
 minutes: 5
 ---
-> ## Learning Objectives {.objectives}
+> ## Learning Objectives
 >
 > * FIX ME
+{: .objectives}
 
 FIX ME

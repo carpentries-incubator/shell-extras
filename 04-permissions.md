@@ -1,11 +1,12 @@
 ---
 layout: page
-title: Permissions
+subtitle: Permissions
 ---
 
-> ## Learning Objectives {.objectives}
+> ## Learning Objectives
 > 
 > * FIXME
+{: .objectives}
 
 Unix controls who can read, modify, and run files using *permissions*.
 We'll discuss how Windows handles permissions at the end of the section:
@@ -18,7 +19,7 @@ She has a unique [user name](./reference.html#user-name),
 and a [user ID](./reference.html#user-id),
 1404.
 
-> ## Why Integer IDs?{.callout}
+> ## Why Integer IDs?
 >
 > Why integers for IDs?
 > Again, the answer goes back to the early 1970s.
@@ -38,6 +39,7 @@ and a [user ID](./reference.html#user-id),
 > and just use the integers,
 > in the same way that someone working in a lab might talk about Experiment 28
 > instead of "the chronotypical alpha-response trials on anacondas".
+{: .callout}
 
 Users can belong to any number of [groups](./reference.html#user-group),
 each of which has a unique [group name](./reference.html#user-group-name)
@@ -87,15 +89,17 @@ This is its way of telling us that `setup` is executable,
 i.e.,
 that it's (probably) something the computer can run.
 
-~~~ {.input}
+~~~
 $ cd labs
 $ ls -F
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 safety.txt    setup*     waiver.txt
 ~~~
+{: .output}
 
-> ## Necessary But Not Sufficient{.callout}
+> ## Necessary But Not Sufficient
 >
 > The fact that something is marked as executable
 > doesn't actually mean it contains a program of some kind.
@@ -107,17 +111,20 @@ safety.txt    setup*     waiver.txt
 > or cause the operating system to open the file
 > with whatever application usually handles it
 > (such as a web browser).
+{: .callout}
 
 Now let's run the command `ls -l`:
 
-~~~ {.input}
+~~~
 $ ls -l
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 -rw-rw-r-- 1 vlad bio  1158  2010-07-11 08:22 safety.txt
 -rwxr-xr-x 1 vlad bio 31988  2010-07-23 20:04 setup
 -rw-rw-r-- 1 vlad bio  2312  2010-07-11 08:23 waiver.txt
 ~~~
+{: .output}
 
 The `-l` flag tells `ls` to give us a long-form listing.
 It's a lot of information, so let's go through the columns in turn.
@@ -156,12 +163,14 @@ To change permissions, we use the `chmod` command
 (whose name stands for "change mode").
 Here's a long-form listing showing the permissions on the final grades in the course Vlad is teaching:
 
-~~~ {.input}
+~~~
 $ ls -l final.grd
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 -rwxrwxrwx 1 vlad bio  4215  2010-08-29 22:30 final.grd
 ~~~
+{: .output}
 
 Whoops: everyone in the world can read it&mdash;and what's worse,
 modify it!
@@ -170,9 +179,10 @@ which would almost certainly not work.)
 
 The command to change the owner's permissions to `rw-` is:
 
-~~~ {.input}
+~~~
 $ chmod u=rw final.grd
 ~~~
+{: .input}
 
 The 'u' signals that we're changing the privileges
 of the user (i.e., the file's owner),
@@ -180,33 +190,39 @@ and `rw` is the new set of permissions.
 A quick `ls -l` shows us that it worked,
 because the owner's permissions are now set to read and write:
 
-~~~ {.input}
+~~~
 $ ls -l final.grd
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 -rw-rwxrwx 1 vlad bio  4215  2010-08-30 08:19 final.grd
 ~~~
+{: .output}
 
 Let's run `chmod` again to give the group read-only permission:
 
-~~~ {.input}
+~~~
 $ chmod g=r final.grd
 $ ls -l final.grd
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 -rw-r--rw- 1 vlad bio  4215  2010-08-30 08:19 final.grd
 ~~~
+{: .output}
 
 And finally,
 let's give "all" (everyone on the system who isn't the file's owner or in its group) no permissions at all:
 
-~~~ {.input}
+~~~
 $ chmod a= final.grd
 $ ls -l final.grd
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 -rw-r----- 1 vlad bio  4215  2010-08-30 08:20 final.grd
 ~~~
+{: .output}
 
 Here,
 the 'a' signals that we're changing permissions for "all",
@@ -217,28 +233,32 @@ We can search by permissions, too.
 Here, for example, we can use `-type f -perm -u=x` to find files
 that the user can execute:
 
-~~~ {.input}
+~~~
 $ find . -type f -perm -u=x
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 ./tools/format
 ./tools/stats
 ~~~
+{: .output}
 
 Before we go any further,
 let's run `ls -a -l`
 to get a long-form listing that includes directory entries that are normally hidden:
 
-~~~ {.input}
+~~~
 $ ls -a -l
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 drwxr-xr-x 1 vlad bio     0  2010-08-14 09:55 .
 drwxr-xr-x 1 vlad bio  8192  2010-08-27 23:11 ..
 -rw-rw-r-- 1 vlad bio  1158  2010-07-11 08:22 safety.txt
 -rwxr-xr-x 1 vlad bio 31988  2010-07-23 20:04 setup
 -rw-rw-r-- 1 vlad bio  2312  2010-07-11 08:23 waiver.txt
 ~~~
+{: .output}
 
 The permissions for `.` and `..` (this directory and its parent) start with a 'd'.
 But look at the rest of their permissions:
@@ -286,12 +306,13 @@ but it's also more complex to administer and understand on small systems.
 Some modern variants of Unix support ACLs as well as the older read-write-execute permissions,
 but hardly anyone uses them.
 
-> ## Challenge {.challenge}
+> ## Challenge
 > If `ls -l myfile.php` returns the following details:
 >
-> ~~~ {.output}
+> ~~~
 > -rwxr-xr-- 1 caro zoo  2312  2014-10-25 18:30 myfile.php
 > ~~~
+> {: .output}
 > 
 > Which of the following statements is true?
 > 
@@ -299,4 +320,5 @@ but hardly anyone uses them.
 > 2. caro (the owner) cannot write to myfile.php
 > 3. members of caro (a group) can read, write, and execute myfile.php
 > 4. members of zoo (a group) cannot execute myfile.php
+{: .challenge}
 

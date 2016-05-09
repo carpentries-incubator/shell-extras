@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Extra Unix Shell Material
 subtitle: Aliases and the .bashrc
 minutes: 5
 ---
-> ## Learning Objectives {.objectives}
+> ## Learning Objectives
 >
 > * FIX ME
+{: .objectives}
 
 FIX ME
