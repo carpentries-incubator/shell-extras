@@ -99,6 +99,7 @@ This will parse as a string, not a dictionary
 
 ## Other Resources
 
+*   [Motivation](motivation.html)
 *   [Reference Guide](reference.html)
 *   [Next Steps](discussion.html)
 *   [Instructor's Guide](instructors.html)""")
@@ -113,6 +114,7 @@ This will parse as a string, not a dictionary
 
 ## Other Resources
 
+*   [Motivation](motivation.html)
 *   [Reference Guide](reference.html)
 *   [Next Steps](discussion.html)
 *   [Instructor's Guide](instructors.html)""")
@@ -139,6 +141,7 @@ Paragraph of introductory material.
 
 ## Other Resources
 
+*   [Motivation](motivation.html)
 *   [Reference Guide](reference.html)
 *   [Next Steps](discussion.html)
 *   [Instructor's Guide](instructors.html)""")
@@ -158,6 +161,7 @@ Paragraph of introductory material.
 
 ## Other Resources
 
+* [Motivation](motivation.html)
 * [Reference Guide](reference.html)
 * [Instructor's Guide](instructors.html)
 
@@ -433,6 +437,17 @@ Spacer paragraph
 >
 > Further exposition""")
         self.assertTrue(validator._validate_callouts())
+
+    def test_sample_file_passes_validation(self):
+        sample_validator = self.VALIDATOR(self.SAMPLE_FILE)
+        res = sample_validator.validate()
+        self.assertTrue(res)
+
+
+class TestMotivationPage(BaseTemplateTest):
+    """Verifies that the instructors page validator works as expected"""
+    SAMPLE_FILE = os.path.join(MARKDOWN_DIR, "motivation.md")
+    VALIDATOR = check.MotivationPageValidator
 
     def test_sample_file_passes_validation(self):
         sample_validator = self.VALIDATOR(self.SAMPLE_FILE)
