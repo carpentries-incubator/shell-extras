@@ -1,6 +1,25 @@
-<div class="footer">
-  <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
-  <a class="label swc-blue-bg" href="https://github.com/swcarpentry/shell-extras">Source</a>
-  <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
-  <a class="label swc-blue-bg" href="LICENSE.html">License</a>
-</div>
+{% comment %}
+  Generic footer: prev_episode and next_episode will only be set if this is an episode,
+  so previous/next link arrows will not appear for other kinds of pages.
+{% endcomment %}
+{% include episode_find_prev_next.html %}
+<hr/>
+<footer class="row">
+  <div class="col-md-1">
+    <h4>{% if prev_episode %}<a href="{{ page.root }}{{ prev_episode.url }}"><span class="glyphicon glyphicon-menu-left"></span></a>{% endif %}</h4>
+  </div>
+  <div class="col-md-10 footertext">
+    <h4>
+      Copyright &copy; 2016 Software Carpentry Foundation
+      /
+      <a href="{{ site.repo }}">Source</a>
+      /
+      <a href="{{ page.root }}/license/">License</a>
+      /
+      <a href="mailto:{{site.email}}">Contact</a>
+    </h4>
+  </div>
+  <div class="col-md-1">
+    <h4>{% if next_episode %}<a href="{{ page.root }}{{ next_episode.url }}"><span class="glyphicon glyphicon-menu-right"></span></a>{% endif %}</h4>
+  </div>
+</footer>
