@@ -90,7 +90,7 @@ that it's (probably) something the computer can run.
 $ cd labs
 $ ls -F
 ~~~
-{: .input}
+{: .bash}
 ~~~
 safety.txt    setup*     waiver.txt
 ~~~
@@ -115,7 +115,7 @@ Now let's run the command `ls -l`:
 ~~~
 $ ls -l
 ~~~
-{: .input}
+{: .bash}
 ~~~
 -rw-rw-r-- 1 vlad bio  1158  2010-07-11 08:22 safety.txt
 -rwxr-xr-x 1 vlad bio 31988  2010-07-23 20:04 setup
@@ -163,7 +163,7 @@ Here's a long-form listing showing the permissions on the final grades in the co
 ~~~
 $ ls -l final.grd
 ~~~
-{: .input}
+{: .bash}
 ~~~
 -rwxrwxrwx 1 vlad bio  4215  2010-08-29 22:30 final.grd
 ~~~
@@ -179,7 +179,7 @@ The command to change the owner's permissions to `rw-` is:
 ~~~
 $ chmod u=rw final.grd
 ~~~
-{: .input}
+{: .bash}
 
 The 'u' signals that we're changing the privileges
 of the user (i.e., the file's owner),
@@ -190,7 +190,7 @@ because the owner's permissions are now set to read and write:
 ~~~
 $ ls -l final.grd
 ~~~
-{: .input}
+{: .bash}
 ~~~
 -rw-rwxrwx 1 vlad bio  4215  2010-08-30 08:19 final.grd
 ~~~
@@ -202,7 +202,7 @@ Let's run `chmod` again to give the group read-only permission:
 $ chmod g=r final.grd
 $ ls -l final.grd
 ~~~
-{: .input}
+{: .bash}
 ~~~
 -rw-r--rw- 1 vlad bio  4215  2010-08-30 08:19 final.grd
 ~~~
@@ -215,7 +215,7 @@ let's give "all" (everyone on the system who isn't the file's owner or in its gr
 $ chmod a= final.grd
 $ ls -l final.grd
 ~~~
-{: .input}
+{: .bash}
 ~~~
 -rw-r----- 1 vlad bio  4215  2010-08-30 08:20 final.grd
 ~~~
@@ -233,7 +233,7 @@ that the user can execute:
 ~~~
 $ find . -type f -perm -u=x
 ~~~
-{: .input}
+{: .bash}
 ~~~
 ./tools/format
 ./tools/stats
@@ -247,7 +247,7 @@ to get a long-form listing that includes directory entries that are normally hid
 ~~~
 $ ls -a -l
 ~~~
-{: .input}
+{: .bash}
 ~~~
 drwxr-xr-x 1 vlad bio     0  2010-08-14 09:55 .
 drwxr-xr-x 1 vlad bio  8192  2010-08-27 23:11 ..

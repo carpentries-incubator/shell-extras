@@ -15,7 +15,7 @@ Let's start by running the command `set` and looking at some of the variables in
 ~~~
 $ set
 ~~~
-{: .input}
+{: .bash}
 ~~~
 COMPUTERNAME=TURING
 HOME=/home/vlad
@@ -99,7 +99,7 @@ Let's show the value of the variable `HOME`:
 ~~~
 $ echo HOME
 ~~~
-{: .input}
+{: .bash}
 ~~~
 HOME
 ~~~
@@ -112,7 +112,7 @@ Let's try this instead:
 ~~~
 $ echo $HOME
 ~~~
-{: .input}
+{: .bash}
 ~~~
 /home/vlad
 ~~~
@@ -133,7 +133,7 @@ Creating a variable is easy&mdash;we just assign a value to a name using "=":
 $ SECRET_IDENTITY=Dracula
 $ echo $SECRET_IDENTITY
 ~~~
-{: .input}
+{: .bash}
 ~~~
 Dracula
 ~~~
@@ -145,7 +145,7 @@ To change the value, just assign a new one:
 $ SECRET_IDENTITY=Camilla
 $ echo $SECRET_IDENTITY
 ~~~
-{: .input}
+{: .bash}
 ~~~
 Camilla
 ~~~
@@ -186,7 +186,7 @@ to run `/bin/zback` with a specific set of arguments:
 ~~~
 alias backup=/bin/zback -v --nostir -R 20000 $HOME $BACKUP_DIR
 ~~~
-{: .input}
+{: .bash}
 
 As you can see,
 aliases can save us a lot of typing, and hence a lot of typing mistakes.
