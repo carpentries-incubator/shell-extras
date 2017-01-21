@@ -11,6 +11,9 @@ title: "Extra Unix Shell Material"
 # Contact email address.
 email: lessons@software-carpentry.org
 
+# Default web-server Index page (can be blank)
+index: "index.html"
+
 #------------------------------------------------------------
 # Generic settings (should not need to change).
 #------------------------------------------------------------
