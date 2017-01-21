@@ -1,11 +1,9 @@
 ---
-layout: page
-title: Extra Unix Shell Material
-subtitle: Job control
-minutes: 5
+title: Job control
+teaching: 5
+exercises: 0
+objectives:
+- "FIX ME"
 ---
-> ## Learning Objectives {.objectives}
->
-> * FIX ME
 
 FIX ME

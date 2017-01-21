@@ -1,11 +1,9 @@
 ---
-layout: page
-title: Extra Unix Shell Material
-subtitle: Directory structure
-minutes: 5
+title: Directory structure
+teaching: 5
+exercises: 0
+objectives:
+- "FIX ME"
 ---
-> ## Learning Objectives {.objectives}
->
-> * FIX ME
 
 FIX ME

@@ -1,20 +1,19 @@
 ---
-layout: page
 title: Manual Pages
+teaching: 10
+exercises: 0
+objectives:
+- FIXME
 ---
-
-> ## Learning Objectives {.objectives}
->
-> *   FIXME
-
 We can get help for any Unix command with the `man`
 (short for manual) command.
 For example,
 here is the command to look up information on `cp`:
 
-~~~ {.input}
+~~~
 $ man cp
 ~~~
+{: .input}
 
 The output displayed is referred to as the "man page".
 
@@ -52,19 +51,21 @@ AUTHOR, REPORTING BUGS, COPYRIGHT, HISTORY, (known) BUGS, and COMPATIBILITY.
 
 Here is the is synopsis for the `cp` command on Ubuntu Linux:
 
-~~~ {.output}
+~~~
 SYNOPSIS
    cp [OPTION]... [-T] SOURCE DEST
-   cp [OPTION]... SOURCE... DIRECTORY
+cp [OPTION]... SOURCE... DIRECTORY
    cp [OPTION]... -t DIRECTORY SOURCE...
 ~~~
+{: .output}
 
 This tells the reader that there are three ways to use the command.
 Let's look at the first usage:
 
-~~~ {.output}
+~~~
 cp [OPTION]... [-T] SOURCE DEST
 ~~~
+{: .output}
 
 `[OPTION]` means the `cp` command can be followed by
 one or more optional [flags](./reference.html#command).
@@ -88,10 +89,10 @@ Note that to use the last one, the `-t` option is mandatory
 The `DESCRIPTION` section starts with a few paragraphs explaining the command and its use,
 then expands on the possible options one by one:
 
-~~~ {.output}
+~~~
      The following options are available:
 
-     -a    Same as -pPR options. Preserves structure and attributes of
+-a    Same as -pPR options. Preserves structure and attributes of
            files but not directory structure.
 
      -f    If the destination file cannot be opened, remove it and create
@@ -104,6 +105,7 @@ then expands on the possible options one by one:
 
       ...  ...
 ~~~
+{: .output}
 
 #### Finding Help on Specific Options
 
@@ -118,10 +120,11 @@ After that,
 we can use the 'n' key to navigate to the next match
 until we find the detailed information we need:
 
-~~~ {.output}
+~~~
 -t, --target-directory=DIRECTORY
      copy all SOURCE arguments into DIRECTORY
 ~~~
+{: .output}
 
 This means that this option has the short form `-t` and the long form `--target-directory`
 and that it takes an argument.
@@ -137,10 +140,11 @@ If you can't find what you need in the man page&mdash;or you can't understand wh
 entering "unix command copy file" into your favorite search engine:
 it will often produce more helpful results.
 
-> ## You May Also Enjoy...{.callout}
+> ## You May Also Enjoy...
 >
 > The [explainshell.com](http://explainshell.com/) site
 > does a great job of breaking complex Unix commands into parts
 > and explaining what each does.
 > Sadly,
 > it doesn't work in reverse...
+{: .callout}

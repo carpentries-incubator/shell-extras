@@ -1,11 +1,9 @@
 ---
-layout: page
-title: Extra Unix Shell Material
-subtitle: Aliases and the .bashrc
-minutes: 5
+title: Aliases and the .bashrc
+teching: 5
+exercises: 0
+objectives:
+- "FIX ME"
 ---
-> ## Learning Objectives {.objectives}
->
-> * FIX ME
 
 FIX ME

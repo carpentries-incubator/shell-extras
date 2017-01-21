@@ -1,16 +1,15 @@
 ---
-layout: page
 title: Working Remotely
+teaching: 10
+exercises: 0
+objectives:
+- "Learn what SSH is"
+- "Learn what an SSH key is"
+- "Generate your own SSH key pair"
+- "Learn how to use your SSH key"
+- "Learn how to work remotely using `ssh` and `scp`"
+- "Add your SSH key to an remote server"
 ---
-> ## Learning Objectives  {.objectives}
->
-> *   Learn what SSH is
-> *   Learn what an SSH key is
-> *   Generate your own SSH key pair
-> *   Learn how to use your SSH key
-> *   Learn how to work remotely using `ssh` and `scp`
-> *   Add your SSH key to an remote server
-
 Let's take a closer look at what happens when we use the shell
 on a desktop or laptop computer.
 The first step is to log in
@@ -91,45 +90,55 @@ To make it clearer which machine is doing what,
 we'll indent the commands sent to the remote machine
 and their output.
 
-~~~ {.input}
+~~~
 $ pwd
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 /users/vlad
 ~~~
-
-~~~ {.input}
+{: .output}
+~~~
 $ ssh vlad@moon.euphoric.edu
 Password: ********
 ~~~
-~~~ {.input}
+{: .input}
+~~~
     moon> hostname
 ~~~
-~~~ {.output}
+{: .input}
+~~~
     moon
 ~~~
-~~~ {.input}
+{: .output}
+~~~
     moon> pwd
 ~~~
-~~~ {.output}
+{: .input}
+~~~
     /home/vlad
 ~~~
-~~~ {.input}
+{: .output}
+~~~
     moon> ls -F
 ~~~
-~~~ {.output}
+{: .input}
+~~~
     bin/     cheese.txt   dark_side/   rocks.cfg
 ~~~
-~~~ {.input}
+{: .output}
+~~~
     moon> exit
 ~~~
-~~~ {.input}
+{: .input}
+~~~
 $ pwd
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 /users/vlad
 ~~~
-
+{: .output}
 
 ### Copying files to, and from a remote machine using `scp`
 
@@ -142,13 +151,15 @@ For example,
 this command copies our latest results to the backup server in the basement,
 printing out its progress as it does so:
 
-~~~ {.input}
+~~~
 $ scp results.dat vlad@backupserver:backups/results-2011-11-11.dat
 Password: ********
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 results.dat              100%  9  1.0 MB/s 00:00
 ~~~
+{: .output}
 
 Note the colon `:`, seperating the hostname of the server and the pathname of 
 the file we are copying to.
@@ -161,39 +172,44 @@ target, for a remote copy, is also the  home directory.
 
 This means that 
 
-~~~ {.input}
+~~~
 $ scp results.dat vlad@backupserver:
 ~~~
+{: .input}
 
 would copy `results.dat` into our home directory on `backupserver`, however, if we did not
 have the colon to inform `scp` of the remote machine, we would still have a valid commmad
 
-~~~ {.input}
+~~~
 $ scp results.dat vlad@backupserver
 ~~~
+{: .input}
 
 but now we have merely created a file called `vlad@backupserver` on our local machine,
 as we would have done with `cp`.
 
-~~~ {.input}
+~~~
 $ cp results.dat vlad@backupserver
 ~~~
+{: .input}
 
 Copying a whole directory betwen remote machines uses the same syntax as the `cp` command:
 we just use the `-r` option to signal that we want copying to be recursively.
 For example,
 this command copies all of our results from the backup server to our laptop:
 
-~~~ {.input}
+~~~
 $ scp -r vlad@backupserver:backups ./backups
 Password: ********
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 results-2011-09-18.dat              100%  7  1.0 MB/s 00:00
 results-2011-10-04.dat              100%  9  1.0 MB/s 00:00
 results-2011-10-28.dat              100%  8  1.0 MB/s 00:00
 results-2011-11-11.dat              100%  9  1.0 MB/s 00:00
 ~~~
+{: .output}
 
 ### Running commands on a remote machine using `ssh`
 
@@ -203,14 +219,16 @@ Suppose we want to check whether we have already created the file
 Instead of logging in and then typing `ls`,
 we could do this:
 
-~~~ {.input}
+~~~
 $ ssh vlad@backupserver "ls results*"
 Password: ********
 ~~~
-~~~ {.output}
+{: .input}
+~~~ 
 results-2011-09-18.dat  results-2011-10-28.dat
 results-2011-10-04.dat  results-2011-11-11.dat
 ~~~
+{: .output}
 
 Here, `ssh` takes the argument after our remote username
 and passes them to the shell on the remote computer.
@@ -240,10 +258,11 @@ The first step in using SSH authorization is to generate your own key pair.
 You might already have an SSH key pair on your machine. You can check to see if
 one exists by moving to your `.ssh` directory and listing the contents.
 
-~~~ {.input}
+~~~
 $ cd ~/.ssh
 $ ls
 ~~~
+{: .input}
 
 If you see `id_rsa.pub`, you already have a key pair and don't need to create a
 new one.
@@ -251,29 +270,32 @@ new one.
 If you don't see `id_rsa.pub`, use the following command to generate a new key
 pair. Make sure to replace `your@email.com` with your own email address.
 
-~~~ {.input}
+~~~
 $ ssh-keygen -t rsa -C "your@email.com"
 ~~~
+{: .input}
 
 When asked where to save the new key, hit enter to accept the default location.
 
-~~~ {.output}
+~~~
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/username/.ssh/id_rsa):
 ~~~
+{: .output}
 
 You will then be asked to provide an optional passphrase. This can be used to
 make your key even more secure, but if what you want is avoiding type your
 password every time you can skip it by hitting enter twice.
 
-~~~ {.output}
+~~~
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 ~~~
+{: .output}
 
 When the key generation is complete, you should see the following confirmation:
 
-~~~ {.output}
+~~~
 Your identification has been saved in /Users/username/.ssh/id_rsa.
 Your public key has been saved in /Users/username/.ssh/id_rsa.pub.
 The key fingerprint is:
@@ -291,6 +313,7 @@ The key's randomart image is:
 |       .+=o      |
 +-----------------+
 ~~~
+{: .output}
 
 The random art image is an alternate way to match keys but we won't be needing this.
 
@@ -300,37 +323,43 @@ passwd.
 
 Display the contents of your new public key file with `cat`:
 
-~~~ {.input}
+~~~
 $ cat ~/.ssh/id_rsa.pub
 ~~~
-~~~ {.output}
+{: .input}
+~~~
 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA879BJGYlPTLIuc9/R5MYiN4yc/YiCLcdBpSdzgK9Dt0Bkfe3rSz5cPm4wmehdE7GkVFXrBJ2YHqPLuM1yx1AUxIebpwlIl9f/aUHOts9eVnVh4NztPy0iSU/Sv0b2ODQQvcy2vYcujlorscl8JjAgfWsO3W4iGEe6QwBpVomcME8IU35v5VbylM9ORQa6wvZMVrPECBvwItTY8cPWH3MGZiK/74eHbSLKA4PY3gM4GHI450Nie16yggEg2aTQfWA1rry9JYWEoHS9pJ1dnLqZU3k/8OWgqJrilwSoC5rGjgp93iu0H8T6+mEHGRQe84Nk1y5lESSWIbn6P636Bl3uQ== your@email.com
 ~~~
+{: .output}
 
 Copy the contents of the output.
 
 Login to the remote server with your username and password.
 
-~~~ {.input}
+~~~
 $ ssh vlad@moon.euphoric.edu
 Password: ********
 ~~~
+{: .input}
 
 Paste the content that you copy at the end of `~/.ssh/authorized_keys`.
 
-~~~ {.input}
+~~~
     moon> nano ~/.ssh/authorized_keys`.
 ~~~
+{: .input}
 
 After append the content, logout of the remote machine and try login again. If
 you setup your SSH key correctly you won't need to type your password.
 
-~~~ {.input}
+~~~
     moon> exit
 ~~~
-~~~ {.input}
+{: .input}
+~~~
 $ ssh vlad@moon.euphoric.edu
 ~~~
+{: .input}
 
 ### SSH Files and Directories
 
@@ -352,23 +381,27 @@ for the `ssh` command.
 Firstly, we check that we have a `.ssh/` directory on another remote
 machine, `comet`
 
-~~~ {.input}
+~~~
 $ ssh vlad@comet "ls -ld ~/.ssh"
 Password: ********
 ~~~
-~~~ {.output}
+{: .input}
+~~~
     ls: cannot access /home/vlad/.ssh: No such file or directory
 ~~~
+{: .output}
 
 Oh dear! We should create the directory; and check that it's there (Note: two commands, seperated by a semi colon)
 
-~~~ {.input}
+~~~
 $ ssh vlad@comet "mkdir ~/.ssh; ls -ld ~/.ssh"
 Password: ********
 ~~~
-~~~ {.output}
+{: .input}
+~~~
     drwxr-xr-x 2 vlad vlad 512 Jan 01 09:09 /home/vlad/.ssh
 ~~~
+{: .output}
 
 Now we have a dot-SSH directory, into which to place SSH-related
 files but we can see that the default permissions allow anyone to
@@ -380,13 +413,15 @@ for the user, and not accessible by others.
 
 Let's alter the permissions on the directory
 
-~~~ {.input}
+~~~
 $ ssh vlad@comet "chmod 700 ~/.ssh; ls -ld ~/.ssh"
 Password: ********
 ~~~
-~~~ {.output}
+{: .input}
+~~~
     drwx------ 2 vlad vlad 512 Jan 01 09:09 /home/vlad/.ssh
 ~~~
+{: .output}
 
 That's looks much better.
 
@@ -397,10 +432,11 @@ copy our public key over as the initial `~/.ssh/authorized_keys`,
 and of course, we will use `scp` to do this, even though we don't
 yet have passwordless SSH access set up.
 
-~~~ {.input}
+~~~
 $ scp ~/.ssh/id_rsa.pub vlad@comet:.ssh/authorized_keys"
 Password: ********
 ~~~
+{: .input}
 
 Note that the default target for the `scp` command on a remote
 machine is the home directory, so we have not needed to use the
@@ -412,27 +448,32 @@ the remote machine, also serves to indicate that we no longer
 need to use our password, because we now have what's needed
 to use SSH without it.
 
-~~~ {.input}
+~~~
 $ ssh vlad@comet "ls -l ~/.ssh"
 ~~~
-~~~ {.output}
+{: .input}
+~~~
     -rw-r--r-- 2 vlad vlad 512 Jan 01 09:11 /home/vlad/.ssh/authorized_keys
 ~~~
+{: .output}
 
 Whilst the authorized keys file is not considered to be highly sensitive, 
 (after all, it contains public keys), we alter the permissions to match
 the man page's recommendations
 
-~~~ {.input}
+~~~
 $ ssh vlad@comet "chmod go-r ~/.ssh/authorized_keys ; ls -l ~/.ssh"
 ~~~
-~~~ {.output}
+{: .input}
+~~~
     -rw------- 2 vlad vlad 512 Jan 01 09:11 /home/vlad/.ssh/authorized_keys
 ~~~
+{: .output}
 
 
 
-> ## Key Points  {.callout}
+> ## Key Points
 > *  SSH is a secure alternative to username/password authorization
 > *  SSH keys are generated in public/private pairs. Your public key can be shared with others. The private keys stays on your machine only.
 > *  The 'ssh' and 'scp' utilities are secure alternatives to logging into, and copying files to/from remote machine
+{: .callout}
