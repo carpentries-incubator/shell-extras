@@ -5,14 +5,24 @@
 // Colors.
 //----------------------------------------
 
-$brand-blue:       #2b3990 !default;
-$brand-gray-light: #999    !default;
-$brand-gray:       #767676 !default;
-$brand-gray-dark:  #333    !default;
-$brand-green:      #6cc644 !default;
-$brand-red:        #bd2c00 !default;
-$brand-orange:     #c9510c !default;
-$brand-purple:     #6e5494 !default;
+// branding
+$color-brand:       #2b3990 !default;
+
+// code boxes
+$color-error:       #bd2c00 !default;
+$color-output:      #303030 !default;
+$color-source:      #6e5494 !default;
+
+// blockquotes
+$color-callout:     #f4fd9c !default;
+$color-challenge:   #eec275 !default;
+$color-checklist:   #dfd2a0 !default;
+$color-discussion:  #eec275 !default;
+$color-keypoints:   #7ae78e !default;
+$color-objectives:  #daee84 !default;
+$color-prereq:      #9cd6dc !default;
+$color-solution:    #ded4b9 !default;
+$color-testimonial: #fc8dc1 !default;
 
 //----------------------------------------
 // Specialized code blocks.
@@ -24,9 +34,16 @@ $brand-purple:     #6e5494 !default;
   margin-bottom: 0px;
 }
 
-.error  { @include cdSetup($brand-red); }
-.output { @include cdSetup($brand-gray-dark); }
-.source { @include cdSetup($brand-purple); }
+.error  { @include cdSetup($color-error); }
+.output { @include cdSetup($color-output); }
+.source { @include cdSetup($color-source); }
+
+.bash   { @include cdSetup($color-source); }
+.make   { @include cdSetup($color-source); }
+.matlab { @include cdSetup($color-source); }
+.python { @include cdSetup($color-source); }
+.r      { @include cdSetup($color-source); }
+.sql    { @include cdSetup($color-source); }
 
 //----------------------------------------
 // Specialized blockquote environments for learning objectives, callouts, etc.
@@ -36,8 +53,8 @@ $codeblock-padding: 5px !default;
 
 @mixin bkSetup($color, $glyph) {
 
-  $gradientcolor1: scale-color($color, $lightness: 70%);
-  $gradientcolor2: scale-color($color, $lightness: 80%);
+  $gradientcolor1: $color;
+  $gradientcolor2: scale-color($color, $lightness: 10%);
 
   padding-left: $codeblock-padding;
   padding-top: 0;
@@ -53,7 +70,6 @@ $codeblock-padding: 5px !default;
     font-size: 20px;
     background: linear-gradient(to bottom, $gradientcolor1, $gradientcolor2);
     border-color: $color;
-    color: darken($color, 20%);
     margin-top: 0px;
     margin-left: -$codeblock-padding; // to move back to the left margin of the enclosing blockquote
   }
@@ -69,13 +85,15 @@ $codeblock-padding: 5px !default;
 
 }
 
-.callout{ @include bkSetup(#31708f, "\e146"); }
-.challenge{ @include bkSetup(#3c763d, "\270f"); }
-.checklist{ @include bkSetup(#D4C30B, "\e067"); }
-.keypoints{ @include bkSetup(#0B80F0, "\e101"); }
-.objectives{ @include bkSetup(#9A2EFE, "\e085"); }
-.prereq{ @include bkSetup(#FF4000, "\e124"); }
-.testimonial{ @include bkSetup(#BFFF00, "\e143"); }
+.callout{ @include bkSetup($color-callout, "\e146"); }
+.challenge{ @include bkSetup($color-challenge, "\270f"); }
+.checklist{ @include bkSetup($color-checklist, "\e067"); }
+.discussion{ @include bkSetup($color-discussion, "\e123"); }
+.keypoints{ @include bkSetup($color-keypoints, "\e101"); }
+.objectives{ @include bkSetup($color-objectives, "\e085"); }
+.prereq{ @include bkSetup($color-prereq, "\e124"); }
+.solution{ @include bkSetup($color-solution, "\e105"); }
+.testimonial{ @include bkSetup($color-testimonial, "\e143"); }
 
 //----------------------------------------
 // Override Bootstrap settings.
@@ -85,6 +103,10 @@ code {
   padding: 0 0;
   color: inherit;
   background-color: inherit;
+}
+
+img {
+  max-width: 100%;
 }
 
 //----------------------------------------
@@ -106,10 +128,15 @@ img.navbar-logo {
 }
 
 div.branding {
-  color: $brand-blue;
+  color: $color-brand;
 }
 
 ul,
 ol {
-  padding-left: 1em;
+  padding-left: 2em;
+}
+
+span.fold-unfold {
+  margin-left: 1em;
+  opacity: 0.5;
 }

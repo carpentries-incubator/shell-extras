@@ -22,3 +22,5 @@ Software Carpentry's [Introduction to the Unix Shell](http://swcarpentry.github.
 *   [Reference](reference.html)
 *   [Discussion](discussion.html)
 *   [Instructor's Guide](instructors.html)
+
+{% include links.md %}
