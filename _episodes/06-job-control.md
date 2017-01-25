@@ -3,7 +3,8 @@ title: Job control
 teaching: 5
 exercises: 0
 questions:
-- "FIX ME"
+- "How do keep track of the process running on my machine?"
+- "Can I run more than one program/script from within a shell?"
 objectives:
 - "Learn how to use `ps` to get information about the state of processes" 
 - "Learn how to control, ie., \"stop/pause/background/foreground\" processes"
@@ -243,6 +244,6 @@ time. It's less important now: if we want to run another program, it's
 easy enough to open another window and run it there. However, these
 ideas and tools are making a comeback, as they're often the easiest way
 to run and control programs on remote computers elsewhere on the
-network. This lesson's [ssh episode]({{ page.root }}/02-ssh/) has more
+network. This lesson's [ssh episode]({{ page.root }}/02-ssh/{{ site.index }}) has more
 to say about that.
 
