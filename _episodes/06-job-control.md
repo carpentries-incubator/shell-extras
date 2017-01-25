@@ -11,7 +11,7 @@ keypoints:
 ---
 
 Our next topic is how to control programs *once they're running*. This
-is called [job control](glossary.html#job-control), and while it's less
+is called [job control](./reference.html#job-control), and while it's less
 important today than it was back in the Dark Ages, it is coming back
 into its own as more people begin to leverage the power of computer
 networks.
@@ -23,14 +23,18 @@ are yours: they're running programs you explicitly asked for, like your
 web browser. Many others belong to the operating system that manages
 your computer for you, or, if you're on a shared machine, to other
 users. You can use the `ps` command to list them, just as you use `ls`
-to list files and directories:
+to list files and directories.
 
 ~~~
 $ ps
+~~~
+{: .bash}
+~~~
 PID    PPID   PGID   TTY   UID     STIME   COMMAND
 2152      1   2152   con  1000  13:19:07   /usr/bin/bash
 2276   2152   2276   con  1000  14:53:48   /usr/bin/ps
 ~~~
+{: .output}
 
 Every process has a unique process id (PID). Remember, this is a
 property of the process, not of the program that process is executing:
@@ -70,17 +74,22 @@ Any results it had calculated, but not written to disk, are lost.
 
 ~~~
 $ ./analyze results*.dat
+~~~
+{: .bash}
+~~~
 ...a few minutes pass...
 ^C
 ~~~
+{: .output}
 
 Let's run that same command again, with an ampersand `&` at the end of
 the line to tell the shell we want it to run in the
-[background](glossary.html#background):
+[background](./reference.html#background):
 
 ~~~
 $ ./analyze results*.dat &
 ~~~
+{: .bash}
 
 When we do this, the shell launches the program as before. Instead of
 leaving our keyboard and screen connected to the program's standard
@@ -91,10 +100,14 @@ for the next run of the program in a file:
 
 ~~~
 $ cat > params.txt
+~~~
+{: .bash}
+~~~
 density: 22.0
 viscosity: 0.75
 ^D
 ~~~
+{: .output}
 
 (Remember, \^D is the shell's way of showing Control-D, which means "end
 of input".) Now let's run the `jobs` command, which tells us what
@@ -102,8 +115,12 @@ processes are currently running in the background:
 
 ~~~
 $ jobs
+~~~
+{: .bash}
+~~~
 [1] ./analyze results01.dat results02.dat results03.dat
 ~~~
+{: .output}
 
 Since we're about to go and get coffee, we might as well use the
 foreground command, `fg`, to bring our background job into the
@@ -111,8 +128,12 @@ foreground:
 
 ~~~
 $ fg
+~~~
+{: .bash}
+~~~
 ...a few minutes pass...
 ~~~
+{: .output}
 
 When `analyze` finishes running, the shell gives us a fresh prompt as
 usual. If we had several jobs running in the background, we could
@@ -130,8 +151,12 @@ tells us that our program has been stopped, and gives us its job number:
 ~~~
 $ ./analyze results01.dat
 ^Z
+~~~
+{: .bash}
+~~~
 [1]  Stopped   ./analyze results01.dat
 ~~~
+{: .output}
 
 If we type `bg %1`, the shell starts the process running again, but in
 the background. We can check that it's running using `jobs`, and kill it
@@ -143,14 +168,22 @@ Control-C:
 $ bg %1
 
 $ jobs
+~~~
+{: .bash}
+~~~
 [1] ./analyze results01.dat
-
+~~~
+{: .output}
+~~~
 $ kill %1
 ~~~
+{: .bash}
 
 Job control was important when users only had one terminal window at a
 time. It's less important now: if we want to run another program, it's
 easy enough to open another window and run it there. However, these
 ideas and tools are making a comeback, as they're often the easiest way
 to run and control programs on remote computers elsewhere on the
-network. We'll look at how to do this [later in this chapter](#s:ssh).
+network. This lesson's [ssh episode]({{ page.root }}/02-ssh/) has more
+to say about that.
+
