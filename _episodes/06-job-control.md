@@ -63,7 +63,7 @@ $ ps
 ~~~
 {: .output}
 
-Basically then, at the time you ran the `ps` command, you then had
+At the time you ran the `ps` command, you had
 two active processes, your  (`bash`) shell and the  (`ps`) command
 you had invoked in it.
 
@@ -105,7 +105,7 @@ shell it was invoked in.
 Column 1 shows the username of the user the processes
 are being run by. This is the username the computer uses when checking
 permissions: each process is allowed to access exactly the same things as
-the user ruuning it, no more, no less.
+the user running it, no more, no less.
 
 Column 5, STIME, shows when the process started running, whilst Column 7,
 TIME, shows you how much time process has used, whilst Column 8,
