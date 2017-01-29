@@ -36,10 +36,10 @@ What if we want to run some commands on another machine,
 such as the server in the basement that manages our database of experimental results?
 To do this,
 we have to first log in to that machine.
-We call this a [remote login](./reference.html#remote-login).
+We call this a [remote login]({{ page.root }}/reference/#remote-login).
 
 In order for us to be able to login, the remote computer must be runing 
-a [remote login server](./reference.html#remote-login-server) and we will
+a [remote login server]({{ page.root }}/reference/#remote-login-server) and we will
 run a client program that can talk to that server.
 The client program passes our login credentials to the remote login server
 and, if we are allowed to login, that server then runs a shell for us on the 
@@ -64,14 +64,14 @@ However, anyone could watch the unencrypted network traffic, which meant that vi
 steal usernames and passwords,
 and use them for all manner of nefarious purposes.
 
-The [SSH protocol](./reference.html#ssh-protocol) was invented to prevent this (or at least slow it down).
+The [SSH protocol]({{ page.root }}/reference/#ssh-protocol) was invented to prevent this (or at least slow it down).
 It uses several sophisticated, and heavily tested, encryption protocols
 to ensure that outsiders can't see what's in the messages
 going back and forth between different computers.
 
-The remote login server which accepts connections from client programs is known as the [SSH daemon](./reference.html#ssh-daemon), or `sshd`.
+The remote login server which accepts connections from client programs is known as the [SSH daemon]({{ page.root }}/reference/#ssh-daemon), or `sshd`.
 
-The client program we use to login remotely is the [secure shell](./reference.html#secure-shell),
+The client program we use to login remotely is the [secure shell]({{ page.root }}/reference/#secure-shell),
 or `ssh`, think (`s`)ecure `sh`. 
 
 The `ssh` login client has a companion program called `scp`, think  (`s`)ecure `cp`, 
@@ -248,7 +248,7 @@ and sends the output back to our local shell for display.
 Typing our password over and over again is annoying,
 especially if the commands we want to run remotely are in a loop.
 To remove the need to do this,
-we can create an [SSH key](./reference.html#ssh-key)
+we can create an [SSH key]({{ page.root }}/reference/#ssh-key)
 to tell the remote machine
 that it should always trust us.
 

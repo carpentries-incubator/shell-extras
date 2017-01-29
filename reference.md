@@ -23,8 +23,46 @@ to allow other pages to hyperlink to specific glossary entries.)
 This renders as:
 
 {:auto_ids}
-key word 1
-:   explanation 1
+remote login
+: FIXME
 
-key word 2
-:   explanation 2
+remote login server
+: FIXME
+
+SSH daemon
+: FIXME
+
+secure shell
+: FIXME
+
+SSH key
+: FIXME
+
+SSH protocol
+: FIXME
+
+command
+: FIXME
+
+user name
+: FIXME
+
+user ID
+: FIXME
+
+user group
+: FIXME
+
+user group name
+: FIXME
+
+user group ID
+: FIXME
+
+access control lists
+: FIXME
+
+search path
+: FIXME
+
+
