@@ -68,7 +68,7 @@ cp [OPTION]... [-T] SOURCE DEST
 {: .output}
 
 `[OPTION]` means the `cp` command can be followed by
-one or more optional [flags](./reference.html#command).
+one or more optional [flags]({{ page.root }}/reference/#command).
 We can tell they're optional because of the square brackets,
 and we can tell that one or more are welcome because of the ellipsis (...).
 For example,

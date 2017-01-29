@@ -70,3 +70,8 @@ exclude:
 
 # Turn off built-in syntax highlighting.
 highlighter: false
+
+# Auto IDs for the glossary in the reference.html
+kramdown:
+  auto_ids: true
+
