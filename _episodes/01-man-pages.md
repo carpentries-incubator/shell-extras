@@ -54,7 +54,7 @@ Here is the is synopsis for the `cp` command on Ubuntu Linux:
 ~~~
 SYNOPSIS
    cp [OPTION]... [-T] SOURCE DEST
-cp [OPTION]... SOURCE... DIRECTORY
+   cp [OPTION]... SOURCE... DIRECTORY
    cp [OPTION]... -t DIRECTORY SOURCE...
 ~~~
 {: .output}
