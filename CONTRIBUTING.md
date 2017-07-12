@@ -54,7 +54,7 @@ and to meet some of our community members.
     please work in <https://github.com/swcarpentry/shell-extras>,
     which can be viewed at <https://swcarpentry.github.io/shell-extras>.
 
-2.  If you wish to change this example lesson,
+2.  If you wish to change the example lesson,
     please work in <https://github.com/swcarpentry/lesson-example>,
     which documents the format of our lessons
     and can be viewed at <https://swcarpentry.github.io/lesson-example>.
@@ -111,7 +111,7 @@ you may want to look at
 [How to Contribute to an Open Source Project on GitHub][how-contribute].
 In brief:
 
-1.  The published copy of the lesson is in the [episodes][episodes] directory in the `gh-pages` branch of the repository
+1.  The published copy of the lesson is in the `gh-pages` branch of the repository
     (so that GitHub will regenerate it automatically).
     Please create all branches from that,
     and merge the [master repository][repo]'s `gh-pages` branch into your `gh-pages` branch
@@ -155,4 +155,3 @@ You can also [reach us by email][contact].
 [swc-issues]: https://github.com/issues?q=user%3Aswcarpentry
 [swc-lessons]: http://software-carpentry.org/lessons/
 [swc-site]: http://software-carpentry.org/
-[episodes]: _episodes
