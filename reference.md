@@ -1,9 +1,7 @@
 ---
-layout: page
-title: Extra Unix Shell Material
-subtitle: Reference
+layout: reference
+permalink: /reference/
 ---
-FIXME
 
 ## Glossary
 
