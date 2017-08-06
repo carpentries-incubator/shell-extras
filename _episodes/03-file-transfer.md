@@ -206,3 +206,5 @@ $ lftp -c mget http://swcarpentry.github.io/shell-extras/*.html
 {: .bash}
 
 Please refer to the man page by typing `man lftp` in the shell for more information.
+
+{% include links.md %}

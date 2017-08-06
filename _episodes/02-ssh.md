@@ -504,3 +504,4 @@ $ ssh vlad@comet "chmod go-r ~/.ssh/authorized_keys ; ls -l ~/.ssh"
 ~~~
 {: .output}
 
+{% include links.md %}

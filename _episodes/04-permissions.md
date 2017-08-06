@@ -335,3 +335,5 @@ but hardly anyone uses them.
 > 3. members of caro (a group) can read, write, and execute myfile.php
 > 4. members of zoo (a group) cannot execute myfile.php
 {: .challenge}
+
+{% include links.md %}
