@@ -15,7 +15,8 @@ Those variables control its execution,
 so by changing their values
 you can change how the shell and other programs behave.
 
-Let's start by running the command `set` and looking at some of the variables in a typical shell session:
+Let's start by running the command `set` and looking at some of the variables
+in a typical shell session:
 
 ~~~
 $ set
@@ -57,7 +58,7 @@ In this case, the convention is to use a colon ':' as a separator.
 If a program wants the individual elements of such a list,
 it's the program's responsibility to split the variable's string value into pieces.
 
-### The `PATH` Variable
+## The `PATH` Variable
 
 Let's have a closer look at that `PATH` variable.
 Its value defines the shell's [search path](./reference.html#search-path),
@@ -98,7 +99,7 @@ Notice that it will *never* find the program `/users/vlad/analyze`
 unless we type in the full path to the program,
 since the directory `/users/vlad` isn't in `PATH`.
 
-### Showing the Value of a Variable
+## Showing the Value of a Variable
 
 Let's show the value of the variable `HOME`:
 
@@ -133,7 +134,7 @@ the shell does the replacement *before* running the program we've asked for.
 Thanks to this expansion, what we actually run is `echo /home/vlad`,
 which displays the right thing.
 
-### Creating and Changing Variables
+## Creating and Changing Variables
 
 Creating a variable is easy&mdash;we just assign a value to a name using "=":
 

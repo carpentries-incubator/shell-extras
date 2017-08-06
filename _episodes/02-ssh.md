@@ -53,33 +53,37 @@ That remote shell runs those commands on our behalf,
 just as a local shell would,
 then sends back output, via the server, to our client, for our computer to display.
 
-### SSH History
+## SSH History
 
 Back in the day,
 when everyone trusted each other and knew every chip in their computer by its first name,
-people didn't encrypt anything except the most sensitive information when sending it over a network
-and the two programs used for running a shell (usually back then, the Bourne Shell, `sh`) on, or copying
-files to, a remote machine were named `rsh` and `rcp`, respectively. Think (`r`)emote `sh` and `cp`
+people didn't encrypt anything except the most sensitive information when sending it over
+a network and the two programs used for running a shell
+(usually back then, the Bourne Shell, `sh`) on, or copying files to, a remote machine
+were named `rsh` and `rcp`, respectively. Think (`r`)emote `sh` and `cp`
 
 However, anyone could watch the unencrypted network traffic, which meant that villains could
 steal usernames and passwords,
 and use them for all manner of nefarious purposes.
 
-The [SSH protocol](./reference.html#ssh-protocol) was invented to prevent this (or at least slow it down).
+The [SSH protocol](./reference.html#ssh-protocol) was invented to prevent this
+(or at least slow it down).
 It uses several sophisticated, and heavily tested, encryption protocols
 to ensure that outsiders can't see what's in the messages
 going back and forth between different computers.
 
-The remote login server which accepts connections from client programs is known as the [SSH daemon](./reference.html#ssh-daemon), or `sshd`.
+The remote login server which accepts connections from client programs is known as
+the [SSH daemon](./reference.html#ssh-daemon), or `sshd`.
 
 The client program we use to login remotely is the [secure shell](./reference.html#secure-shell),
 or `ssh`, think (`s`)ecure `sh`. 
 
 The `ssh` login client has a companion program called `scp`, think  (`s`)ecure `cp`, 
-which allows us to copy files to or from a remote computer using the same kind of encrypted connection.
+which allows us to copy files to or from a remote computer using the same kind of
+encrypted connection.
 
 
-### A remote login using `ssh`
+## A remote login using `ssh`
 
 To make a remote login, we issue the command `ssh username@computer` 
 which tries to make a connection to the SSH daemon running on the remote computer we have specified.
@@ -159,7 +163,7 @@ $ pwd
 {: .output}
 
 
-### Copying files to, and from a remote machine using `scp`
+## Copying files to, and from a remote machine using `scp`
 
 To copy a file,
 we specify the source and destination paths,
@@ -232,7 +236,7 @@ results-2011-11-11.dat              100%  9  1.0 MB/s 00:00
 ~~~
 {: .output}
 
-### Running commands on a remote machine using `ssh`
+## Running commands on a remote machine using `ssh`
 
 Here's one more thing the `ssh` client program can do for us.
 Suppose we want to check whether we have already created the file
@@ -259,7 +263,7 @@ Since those arguments are a legal command,
 the remote shell runs `ls results` for us
 and sends the output back to our local shell for display.
 
-### SSH Keys
+## SSH Keys
 
 Typing our password over and over again is annoying,
 especially if the commands we want to run remotely are in a loop.
@@ -385,7 +389,7 @@ $ ssh vlad@moon.euphoric.edu
 ~~~
 {: .bash}
 
-### SSH Files and Directories
+## SSH Files and Directories
 
 The example of copying our public key to a remote machine, so that it 
 can then be used when we next SSH into that remote machine, assumed
@@ -416,7 +420,8 @@ Password: ********
 ~~~
 {: .output}
 
-Oh dear! We should create the directory; and check that it's there (Note: two commands, seperated by a semi colon)
+Oh dear! We should create the directory; and check that it's there
+(Note: two commands, seperated by a semi colon)
 
 ~~~
 $ ssh vlad@comet "mkdir ~/.ssh; ls -ld ~/.ssh"

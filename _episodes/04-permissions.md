@@ -161,11 +161,13 @@ Here, the owner can read, write, and execute the file: `rwx`.
 The middle triplet shows us the group's permissions.
 If the permission is turned off, we see a dash, so `r-x` means "read and execute, but not write".
 The final triplet shows us what everyone who isn't the file's owner, or in the file's group, can do.
-In this case, it's 'r-x' again, so everyone on the system can look at the file's contents and run it.
+In this case, it's 'r-x' again, so everyone on the system can look at the file's contents
+and run it.
 
 To change permissions, we use the `chmod` command
 (whose name stands for "change mode").
-Here's a long-form listing showing the permissions on the final grades in the course Vlad is teaching:
+Here's a long-form listing showing the permissions on the final grades in the course
+Vlad is teaching:
 
 ~~~
 $ ls -l final.grd
@@ -219,7 +221,8 @@ $ ls -l final.grd
 {: .output}
 
 And finally,
-let's give "all" (everyone on the system who isn't the file's owner or in its group) no permissions at all:
+let's give "all" (everyone on the system who isn't the file's owner or in its group)
+no permissions at all:
 
 ~~~
 $ chmod a= final.grd
@@ -281,7 +284,7 @@ It gives someone the right to *traverse* the directory, but not to look at its c
 The distinction is subtle, so let's have a look at an example.
 Vlad's home directory has three subdirectories called `venus`, `mars`, and `pluto`:
 
-![execute](fig/x-for-directories.svg "Execute Permission for Directories")
+![execute](fig/04-x-for-directories.svg "Execute Permission for Directories")
 
 Each of these has a subdirectory in turn called `notes`,
 and those sub-subdirectories contain various files.
@@ -298,7 +301,7 @@ She's allowed to go through `pluto`, but not to look at what's there.
 This trick gives people a way to make some of their directories visible to the world as a whole
 without opening up everything else.
 
-### What about Windows?
+## What about Windows?
 
 Those are the basics of permissions on Unix.
 As we said at the outset, though, things work differently on Windows.
@@ -306,7 +309,8 @@ There, permissions are defined by [access control lists](./reference.html#access
 or ACLs.
 An ACL is a list of pairs, each of which combines a "who" with a "what".
 For example,
-you could give the Mummy permission to append data to a file without giving him permission to read or delete it,
+you could give the Mummy permission to append data to a file without giving him permission
+to read or delete it,
 and give Frankenstein permission to delete a file without being able to see what it contains.
 
 This is more flexible that the Unix model,
