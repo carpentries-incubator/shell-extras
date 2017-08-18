@@ -14,7 +14,7 @@ title: "Extra Unix Shell Material"
 contact: "mailto:lessons@software-carpentry.org"
 
 # Default web-server Index page (can be blank)
-index: "index.html"
+index:
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
