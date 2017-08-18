@@ -52,7 +52,7 @@ That remote shell runs those commands on our behalf,
 just as a local shell would,
 then sends back output, via the server, to our client, for our computer to display.
 
-### SSH History
+## SSH History
 
 Back in the day,
 when everyone trusted each other and knew every chip in their computer by its first name,
@@ -64,21 +64,24 @@ However, anyone could watch the unencrypted network traffic, which meant that vi
 steal usernames and passwords,
 and use them for all manner of nefarious purposes.
 
-The [SSH protocol]({{ page.root }}/reference/{{ site.index }}#ssh-protocol) was invented to prevent this (or at least slow it down).
+The [SSH protocol]({{ page.root }}/reference/{{ site.index }}#ssh-protocol)
+was invented to prevent this (or at least slow it down).
 It uses several sophisticated, and heavily tested, encryption protocols
 to ensure that outsiders can't see what's in the messages
 going back and forth between different computers.
 
-The remote login server which accepts connections from client programs is known as the [SSH daemon]({{ page.root }}/reference/{{ site.index }}#ssh-daemon), or `sshd`.
+The remote login server which accepts connections from client programs
+is known as the [SSH daemon]({{ page.root }}/reference/{{ site.index }}#ssh-daemon), or `sshd`.
 
-The client program we use to login remotely is the [secure shell]({{ page.root }}/reference/{{ site.index }}#secure-shell),
+The client program we use to login remotely is
+the [secure shell]({{ page.root }}/reference/{{ site.index }}#secure-shell),
 or `ssh`, think (`s`)ecure `sh`. 
 
 The `ssh` login client has a companion program called `scp`, think  (`s`)ecure `cp`, 
 which allows us to copy files to or from a remote computer using the same kind of encrypted connection.
 
 
-### A remote login using `ssh`
+## A remote login using `ssh`
 
 To make a remote login, we issue the command `ssh username@computer` 
 which tries to make a connection to the SSH daemon running on the remote computer we have specified.
@@ -100,53 +103,64 @@ and their output.
 $ pwd
 ~~~
 {: .bash}
-~~~
-/users/vlad
-~~~
-{: .output}
-~~~
-$ ssh vlad@moon.euphoric.edu
-Password: ********
-~~~
-{: .bash}
-~~~
-    moon> hostname
-~~~
-{: .bash}
-~~~
-    moon
-~~~
-{: .output}
-~~~
-    moon> pwd
-~~~
-{: .bash}
-~~~
-    /home/vlad
-~~~
-{: .output}
-~~~
-    moon> ls -F
-~~~
-{: .bash}
-~~~
-    bin/     cheese.txt   dark_side/   rocks.cfg
-~~~
-{: .output}
-~~~
-    moon> exit
-~~~
-{: .bash}
-~~~
-$ pwd
-~~~
-{: .bash}
+
 ~~~
 /users/vlad
 ~~~
 {: .output}
 
-### Copying files to, and from a remote machine using `scp`
+~~~
+$ ssh vlad@moon.euphoric.edu
+Password: ********
+~~~
+{: .bash}
+
+~~~
+    moon> hostname
+~~~
+{: .bash}
+
+~~~
+    moon
+~~~
+{: .output}
+
+~~~
+    moon> pwd
+~~~
+{: .bash}
+
+~~~
+    /home/vlad
+~~~
+{: .output}
+
+~~~
+    moon> ls -F
+~~~
+{: .bash}
+
+~~~
+    bin/     cheese.txt   dark_side/   rocks.cfg
+~~~
+{: .output}
+
+~~~
+    moon> exit
+~~~
+{: .bash}
+
+~~~
+$ pwd
+~~~
+{: .bash}
+
+~~~
+/users/vlad
+~~~
+{: .output}
+
+## Copying files to, and from a remote machine using `scp`
 
 To copy a file,
 we specify the source and destination paths,
@@ -162,6 +176,7 @@ $ scp results.dat vlad@backupserver:backups/results-2011-11-11.dat
 Password: ********
 ~~~
 {: .bash}
+
 ~~~
 results.dat              100%  9  1.0 MB/s 00:00
 ~~~
@@ -209,6 +224,7 @@ $ scp -r vlad@backupserver:backups ./backups
 Password: ********
 ~~~
 {: .bash}
+
 ~~~
 results-2011-09-18.dat              100%  7  1.0 MB/s 00:00
 results-2011-10-04.dat              100%  9  1.0 MB/s 00:00
@@ -217,7 +233,7 @@ results-2011-11-11.dat              100%  9  1.0 MB/s 00:00
 ~~~
 {: .output}
 
-### Running commands on a remote machine using `ssh`
+## Running commands on a remote machine using `ssh`
 
 Here's one more thing the `ssh` client program can do for us.
 Suppose we want to check whether we have already created the file
@@ -230,6 +246,7 @@ $ ssh vlad@backupserver "ls results*"
 Password: ********
 ~~~
 {: .bash}
+
 ~~~ 
 results-2011-09-18.dat  results-2011-10-28.dat
 results-2011-10-04.dat  results-2011-11-11.dat
@@ -243,7 +260,7 @@ Since those arguments are a legal command,
 the remote shell runs `ls results` for us
 and sends the output back to our local shell for display.
 
-### SSH Keys
+## SSH Keys
 
 Typing our password over and over again is annoying,
 especially if the commands we want to run remotely are in a loop.
@@ -333,6 +350,7 @@ Display the contents of your new public key file with `cat`:
 $ cat ~/.ssh/id_rsa.pub
 ~~~
 {: .bash}
+
 ~~~
 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA879BJGYlPTLIuc9/R5MYiN4yc/YiCLcdBpSdzgK9Dt0Bkfe3rSz5cPm4wmehdE7GkVFXrBJ2YHqPLuM1yx1AUxIebpwlIl9f/aUHOts9eVnVh4NztPy0iSU/Sv0b2ODQQvcy2vYcujlorscl8JjAgfWsO3W4iGEe6QwBpVomcME8IU35v5VbylM9ORQa6wvZMVrPECBvwItTY8cPWH3MGZiK/74eHbSLKA4PY3gM4GHI450Nie16yggEg2aTQfWA1rry9JYWEoHS9pJ1dnLqZU3k/8OWgqJrilwSoC5rGjgp93iu0H8T6+mEHGRQe84Nk1y5lESSWIbn6P636Bl3uQ== your@email.com
 ~~~
@@ -362,12 +380,13 @@ you setup your SSH key correctly you won't need to type your password.
     moon> exit
 ~~~
 {: .bash}
+
 ~~~
 $ ssh vlad@moon.euphoric.edu
 ~~~
 {: .bash}
 
-### SSH Files and Directories
+## SSH Files and Directories
 
 The example of copying our public key to a remote machine, so that it 
 can then be used when we next SSH into that remote machine, assumed
@@ -392,18 +411,21 @@ $ ssh vlad@comet "ls -ld ~/.ssh"
 Password: ********
 ~~~
 {: .bash}
+
 ~~~
     ls: cannot access /home/vlad/.ssh: No such file or directory
 ~~~
 {: .output}
 
-Oh dear! We should create the directory; and check that it's there (Note: two commands, seperated by a semi colon)
+Oh dear! We should create the directory; and check that it's there
+(Note: two commands, seperated by a semicolon)
 
 ~~~
 $ ssh vlad@comet "mkdir ~/.ssh; ls -ld ~/.ssh"
 Password: ********
 ~~~
 {: .bash}
+
 ~~~
     drwxr-xr-x 2 vlad vlad 512 Jan 01 09:09 /home/vlad/.ssh
 ~~~
@@ -424,6 +446,7 @@ $ ssh vlad@comet "chmod 700 ~/.ssh; ls -ld ~/.ssh"
 Password: ********
 ~~~
 {: .bash}
+
 ~~~
     drwx------ 2 vlad vlad 512 Jan 01 09:09 /home/vlad/.ssh
 ~~~
@@ -458,6 +481,7 @@ to use SSH without it.
 $ ssh vlad@comet "ls -l ~/.ssh"
 ~~~
 {: .bash}
+
 ~~~
     -rw-r--r-- 2 vlad vlad 512 Jan 01 09:11 /home/vlad/.ssh/authorized_keys
 ~~~
@@ -471,6 +495,7 @@ the man page's recommendations
 $ ssh vlad@comet "chmod go-r ~/.ssh/authorized_keys ; ls -l ~/.ssh"
 ~~~
 {: .bash}
+
 ~~~
     -rw------- 2 vlad vlad 512 Jan 01 09:11 /home/vlad/.ssh/authorized_keys
 ~~~
@@ -478,3 +503,4 @@ $ ssh vlad@comet "chmod go-r ~/.ssh/authorized_keys ; ls -l ~/.ssh"
 
 
 
+{% include links.md %}
