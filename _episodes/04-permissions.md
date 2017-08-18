@@ -1,10 +1,15 @@
 ---
-title: Permissions
+title: "Permissions"
 teaching: 10
 exercises: 0
+questions:
+- "FIXME"
 objectives:
 - "FIXME"
+keypoints:
+- "FIXME"
 ---
+
 Unix controls who can read, modify, and run files using *permissions*.
 We'll discuss how Windows handles permissions at the end of the section:
 the concepts are similar,
@@ -158,12 +163,14 @@ In this case, it's 'r-x' again, so everyone on the system can look at the file's
 
 To change permissions, we use the `chmod` command
 (whose name stands for "change mode").
-Here's a long-form listing showing the permissions on the final grades in the course Vlad is teaching:
+Here's a long-form listing showing the permissions on the final grades
+in the course Vlad is teaching:
 
 ~~~
 $ ls -l final.grd
 ~~~
 {: .bash}
+
 ~~~
 -rwxrwxrwx 1 vlad bio  4215  2010-08-29 22:30 final.grd
 ~~~
@@ -191,6 +198,7 @@ because the owner's permissions are now set to read and write:
 $ ls -l final.grd
 ~~~
 {: .bash}
+
 ~~~
 -rw-rwxrwx 1 vlad bio  4215  2010-08-30 08:19 final.grd
 ~~~
@@ -203,6 +211,7 @@ $ chmod g=r final.grd
 $ ls -l final.grd
 ~~~
 {: .bash}
+
 ~~~
 -rw-r--rw- 1 vlad bio  4215  2010-08-30 08:19 final.grd
 ~~~
@@ -216,6 +225,7 @@ $ chmod a= final.grd
 $ ls -l final.grd
 ~~~
 {: .bash}
+
 ~~~
 -rw-r----- 1 vlad bio  4215  2010-08-30 08:20 final.grd
 ~~~
@@ -234,6 +244,7 @@ that the user can execute:
 $ find . -type f -perm -u=x
 ~~~
 {: .bash}
+
 ~~~
 ./tools/format
 ./tools/stats
@@ -248,6 +259,7 @@ to get a long-form listing that includes directory entries that are normally hid
 $ ls -a -l
 ~~~
 {: .bash}
+
 ~~~
 drwxr-xr-x 1 vlad bio     0  2010-08-14 09:55 .
 drwxr-xr-x 1 vlad bio  8192  2010-08-27 23:11 ..
@@ -285,7 +297,7 @@ She's allowed to go through `pluto`, but not to look at what's there.
 This trick gives people a way to make some of their directories visible to the world as a whole
 without opening up everything else.
 
-#### What about Windows?
+## What about Windows?
 
 Those are the basics of permissions on Unix.
 As we said at the outset, though, things work differently on Windows.
@@ -319,3 +331,4 @@ but hardly anyone uses them.
 > 4. members of zoo (a group) cannot execute myfile.php
 {: .challenge}
 
+{% include links.md %}

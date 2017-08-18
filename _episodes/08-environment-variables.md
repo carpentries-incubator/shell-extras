@@ -2,9 +2,14 @@
 title: Shell Variables
 teaching: 10
 exercises: 0
+questions:
+- "FIXME"
 objectives:
-- "FIX ME"
+- "FIXME"
+keypoints:
+- "FIXME"
 ---
+
 The shell is just a program, and like other programs, it has variables.
 Those variables control its execution,
 so by changing their values
@@ -16,6 +21,7 @@ Let's start by running the command `set` and looking at some of the variables in
 $ set
 ~~~
 {: .bash}
+
 ~~~
 COMPUTERNAME=TURING
 HOME=/home/vlad
@@ -51,7 +57,7 @@ In this case, the convention is to use a colon ':' as a separator.
 If a program wants the individual elements of such a list,
 it's the program's responsibility to split the variable's string value into pieces.
 
-#### The `PATH` Variable
+## The `PATH` Variable
 
 Let's have a closer look at that `PATH` variable.
 Its value defines the shell's [search path]({{ page.root }}/reference/{{ site.index }}#search-path),
@@ -92,7 +98,7 @@ Notice that it will *never* find the program `/users/vlad/analyze`
 unless we type in the full path to the program,
 since the directory `/users/vlad` isn't in `PATH`.
 
-#### Showing the Value of a Variable
+## Showing the Value of a Variable
 
 Let's show the value of the variable `HOME`:
 
@@ -100,6 +106,7 @@ Let's show the value of the variable `HOME`:
 $ echo HOME
 ~~~
 {: .bash}
+
 ~~~
 HOME
 ~~~
@@ -113,6 +120,7 @@ Let's try this instead:
 $ echo $HOME
 ~~~
 {: .bash}
+
 ~~~
 /home/vlad
 ~~~
@@ -125,7 +133,7 @@ the shell does the replacement *before* running the program we've asked for.
 Thanks to this expansion, what we actually run is `echo /home/vlad`,
 which displays the right thing.
 
-#### Creating and Changing Variables
+## Creating and Changing Variables
 
 Creating a variable is easy&mdash;we just assign a value to a name using "=":
 
@@ -134,6 +142,7 @@ $ SECRET_IDENTITY=Dracula
 $ echo $SECRET_IDENTITY
 ~~~
 {: .bash}
+
 ~~~
 Dracula
 ~~~
@@ -146,6 +155,7 @@ $ SECRET_IDENTITY=Camilla
 $ echo $SECRET_IDENTITY
 ~~~
 {: .bash}
+
 ~~~
 Camilla
 ~~~
@@ -193,3 +203,5 @@ aliases can save us a lot of typing, and hence a lot of typing mistakes.
 You can find interesting suggestions for other aliases
 and other bash tricks by searching for "sample bashrc"
 in your favorite search engine.
+
+{% include links.md %}

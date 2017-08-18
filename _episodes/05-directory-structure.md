@@ -2,8 +2,12 @@
 title: Directory structure
 teaching: 5
 exercises: 0
+questions:
+- "FIXME"
 objectives:
-- "FIX ME"
+- "FIXME"
+keypoints:
+- "FIXME"
 ---
 
-FIX ME
+FIXME

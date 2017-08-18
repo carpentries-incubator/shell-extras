@@ -1,10 +1,15 @@
 ---
-title: Manual Pages
+title: "Manual Pages"
 teaching: 10
 exercises: 0
+questions:
+- "FIXME"
 objectives:
-- FIXME
+- "FIXME"
+keypoints:
+- "FIXME"
 ---
+
 We can get help for any Unix command with the `man`
 (short for manual) command.
 For example,
@@ -47,7 +52,7 @@ Most man pages are divided into sections:
 Other sections we might see include
 AUTHOR, REPORTING BUGS, COPYRIGHT, HISTORY, (known) BUGS, and COMPATIBILITY.
 
-#### How to Read the Synopsis
+## How to Read the Synopsis
 
 Here is the is synopsis for the `cp` command on Ubuntu Linux:
 
@@ -107,7 +112,7 @@ then expands on the possible options one by one:
 ~~~
 {: .output}
 
-#### Finding Help on Specific Options
+## Finding Help on Specific Options
 
 If we want to skip ahead to the option you're interested in,
 we can search for it using the slash key '/'.
@@ -130,14 +135,16 @@ This means that this option has the short form `-t` and the long form `--target-
 and that it takes an argument.
 Its meaning is to copy all the SOURCE arguments into DIRECTORY.
 Thus,
-we can give the destination explicitly instead of relying on having to place the directory at the end.
+we can give the destination explicitly
+instead of relying on having to place the directory at the end.
 
-#### Limitations of Man Pages
+## Limitations of Man Pages
 
 Man pages can be useful for a quick confirmation of how to run a command,
 but they are not famous for being readable.
-If you can't find what you need in the man page&mdash;or you can't understand what you've found&mdash;try
-entering "unix command copy file" into your favorite search engine:
+If you can't find what you need in the man page&mdash;
+or you can't understand what you've found&mdash;
+try entering "unix command copy file" into your favorite search engine:
 it will often produce more helpful results.
 
 > ## You May Also Enjoy...
@@ -148,3 +155,5 @@ it will often produce more helpful results.
 > Sadly,
 > it doesn't work in reverse...
 {: .callout}
+
+{% include links.md %}

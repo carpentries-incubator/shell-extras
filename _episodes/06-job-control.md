@@ -33,7 +33,7 @@ web browser. Many others belong to the operating system that manages
 your computer for you, or, if you're on a shared machine, to other
 users.
 
-### The `ps` command 
+## The `ps` command 
 
 You can use the `ps` command to list processes, just as you use `ls`
 to list files and directories.
@@ -48,7 +48,7 @@ to list files and directories.
 > *your*, *active* processes.
 >
 > After that, this is a command that it is worth reading the
-> `man page' for.
+> '`man` page' for.
 >
 {: .callout}
 
@@ -126,7 +126,7 @@ show more or fewer columns, or may show them in a different order, but
 the same information is generally available everywhere, and the column
 headers are generally consistent.
 
-### Stopping, pausing, resuming, and backgrounding, processes
+## Stopping, pausing, resuming, and backgrounding, processes
 
 The shell provides several commands for stopping, pausing, and resuming
 processes. To see them in action, let's run our `analyze` program on our
@@ -139,6 +139,7 @@ Any results it had calculated, but not written to disk, are lost.
 $ ./analyze results*.dat
 ~~~
 {: .bash}
+
 ~~~
 ...a few minutes pass...
 ^C
@@ -177,6 +178,7 @@ processes are currently running in the background:
 $ jobs
 ~~~
 {: .bash}
+
 ~~~
 [1] ./analyze results01.dat results02.dat results03.dat
 ~~~
@@ -190,6 +192,7 @@ foreground:
 $ fg
 ~~~
 {: .bash}
+
 ~~~
 ...a few minutes pass...
 ~~~
@@ -213,6 +216,7 @@ $ ./analyze results01.dat
 ^Z
 ~~~
 {: .bash}
+
 ~~~
 [1]  Stopped   ./analyze results01.dat
 ~~~
@@ -247,3 +251,4 @@ to run and control programs on remote computers elsewhere on the
 network. This lesson's [ssh episode]({{ page.root }}/02-ssh/{{ site.index }}) has more
 to say about that.
 
+{% include links.md %}
