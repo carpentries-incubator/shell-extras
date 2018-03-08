@@ -3,7 +3,7 @@ title: "Transferring Files"
 teaching: 10
 exercises: 0
 questions:
-- "FIXME"
+- "How to use wget, curl and lftp to transfer file?"
 objectives:
 - "FIXME"
 keypoints:
