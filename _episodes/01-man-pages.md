@@ -3,7 +3,7 @@ title: "Manual Pages"
 teaching: 10
 exercises: 0
 questions:
-- "FIXME"
+- "How to use man pages?"
 objectives:
 - "FIXME"
 keypoints:
