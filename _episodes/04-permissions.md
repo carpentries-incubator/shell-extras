@@ -3,7 +3,7 @@ title: "Permissions"
 teaching: 10
 exercises: 0
 questions:
-- "FIXME"
+- "Understanding file/directory permissions"
 objectives:
 - "FIXME"
 keypoints:
