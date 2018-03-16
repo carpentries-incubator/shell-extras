@@ -3,9 +3,9 @@ title: Shell Variables
 teaching: 10
 exercises: 0
 questions:
-- "FIXME"
+- "How to change shell variables"
 objectives:
-- "FIXME"
+- "Undestanding shell variables"
 keypoints:
 - "FIXME"
 ---
