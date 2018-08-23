@@ -5,7 +5,10 @@ exercises: 0
 questions:
 - "Understanding file/directory permissions"
 objectives:
-- "FIXME"
+- What are file/directory permissions?
+- How to view permissions?
+- How to change permissions?
+- File/directory permissions in Windows
 keypoints:
 - "FIXME"
 ---
