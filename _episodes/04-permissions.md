@@ -5,12 +5,15 @@ exercises: 0
 questions:
 - "Understanding file/directory permissions"
 objectives:
-- What are file/directory permissions?
-- How to view permissions?
-- How to change permissions?
-- File/directory permissions in Windows
+- "What are file/directory permissions?"
+- "How to view permissions?"
+- "How to change permissions?"
+- "File/directory permissions in Windows"
 keypoints:
-- "FIXME"
+- "Correct permissions are critical for the security of a system." 
+- "File permissions describe who and what can read, write, modify, and access a file."
+- "Use `ls -l` to view the permissions for a specific file." 
+- "Use `chmod` to change permissions on a file or directory."
 ---
 
 Unix controls who can read, modify, and run files using *permissions*.
