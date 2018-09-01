@@ -12,7 +12,7 @@ keypoints:
 - "When we talk of 'job control', we really mean 'process control'"
 - "A running process can be stopped, paused, and/or made to run in the background"
 - "A process can be started so as to immediately run in the background"
-- "Paused or backgrounded processes can brought back into the foreground"
+- "Paused or backgrounded processes can be brought back into the foreground"
 - "Process information can be inspected with `ps`"
 ---
 
