@@ -5,9 +5,14 @@ exercises: 0
 questions:
 - "How to use man pages?"
 objectives:
-- "FIXME"
+- "Use `man` to display the manual page for a given command." 
+- "Explain how to read the synopsis of a given command while using `man`."
+- "Search for specific options or flags in the manual page for a given command. " 
 keypoints:
-- "FIXME"
+- "`man command` displays the manual page for a given command."
+- `[OPTION]...` means the given command can be followed by one or more optional flags."
+- "Flags specified after ellipsis are still optional but must come after all other flags."
+- "While inside the manual page,use `/` followed by your pattern to do interactive searching."
 ---
 
 We can get help for any Unix command with the `man`
