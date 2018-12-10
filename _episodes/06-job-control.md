@@ -99,7 +99,7 @@ parent. Every process on a computer is spawned by another, which is its
 parent (except, of course, for the bootstrap process that runs
 automatically when the computer starts up).
 
-Clearly, the `ps -ef` that was run is a child process of the (`bash`)
+Clearly, the `ps -f` that was run is a child process of the (`bash`)
 shell it was invoked in.
 
 Column 1 shows the username of the user the processes
