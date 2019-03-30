@@ -38,7 +38,7 @@ To do this,
 we have to first log in to that machine.
 We call this a [remote login]({{ page.root }}/reference/{{ site.index }}#remote-login).
 
-In order for us to be able to login, the remote computer must be runing 
+In order for us to be able to login, the remote computer must be running 
 a [remote login server]({{ page.root }}/reference/{{ site.index }}#remote-login-server) and we will
 run a client program that can talk to that server.
 The client program passes our login credentials to the remote login server
