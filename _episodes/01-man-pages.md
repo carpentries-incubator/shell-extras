@@ -10,7 +10,7 @@ objectives:
 - "Search for specific options or flags in the manual page for a given command. " 
 keypoints:
 - "`man command` displays the manual page for a given command."
-- `[OPTION]...` means the given command can be followed by one or more optional flags."
+- "`[OPTION]...` means the given command can be followed by one or more optional flags."
 - "Flags specified after ellipsis are still optional but must come after all other flags."
 - "While inside the manual page,use `/` followed by your pattern to do interactive searching."
 ---
