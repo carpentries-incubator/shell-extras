@@ -167,7 +167,7 @@ Please refer to the man pages by typing `man wget`, `man curl`, and `man html2te
 
 ## lftp
 
-Another option is `lftp`. It has a lot of capability, and even does simple bitorrent. 
+Another option is `lftp`. It has a lot of capability, and even does simple bittorrent. 
 
 If we want to retrieve `03-file-transfer.html` on the website and save it with the filename `03-file-transfer.html` locally:
 
