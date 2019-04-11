@@ -5,7 +5,7 @@ exercises: 0
 questions:
 - "How to change shell variables"
 objectives:
-- "Undestanding shell variables"
+- "Understanding shell variables"
 keypoints:
 - "FIXME"
 ---
