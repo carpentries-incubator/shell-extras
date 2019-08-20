@@ -366,10 +366,10 @@ Password: ********
 ~~~
 {: .bash}
 
-Paste the content that you copy at the end of `~/.ssh/authorized_keys`.
+Paste the content that you copy at the end of `~/.ssh/authorized_keys`. 
 
 ~~~
-    moon> nano ~/.ssh/authorized_keys`.
+    moon> nano ~/.ssh/authorized_keys
 ~~~
 {: .bash}
 
@@ -462,7 +462,7 @@ and of course, we will use `scp` to do this, even though we don't
 yet have passwordless SSH access set up.
 
 ~~~
-$ scp ~/.ssh/id_rsa.pub vlad@comet:.ssh/authorized_keys"
+$ scp ~/.ssh/id_rsa.pub vlad@comet:.ssh/authorized_keys
 Password: ********
 ~~~
 {: .bash}
@@ -492,7 +492,7 @@ Whilst the authorized keys file is not considered to be highly sensitive,
 the man page's recommendations
 
 ~~~
-$ ssh vlad@comet "chmod go-r ~/.ssh/authorized_keys ; ls -l ~/.ssh"
+$ ssh vlad@comet "chmod go-r ~/.ssh/authorized_keys; ls -l ~/.ssh"
 ~~~
 {: .bash}
 
