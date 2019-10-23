@@ -1,7 +1,6 @@
 ---
 layout: page
 title: "Citation"
-permalink: /citation/
 ---
 Please cite as:
 

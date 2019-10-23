@@ -1,8 +1,8 @@
 ---
 layout: page
 title: "Contributing"
-permalink: /contributing/
 ---
+
 # Contributing
 
 [Software Carpentry][swc-site] and [Data Carpentry][dc-site] are open source projects,
@@ -15,12 +15,12 @@ and reviews of proposed changes are all welcome.
 ## Contributor Agreement
 
 By contributing,
-you agree that we may redistribute your work under [our license]({{ page.root }}/license/{{ site.index }}).
+you agree that we may redistribute your work under [our license]({% link LICENSE.md %}).
 In exchange,
 we will address your issues and/or assess your change proposal as promptly as we can,
 and help you become a member of our community.
 Everyone involved in [Software Carpentry][swc-site] and [Data Carpentry][dc-site]
-agrees to abide by our [code of conduct]({{ page.root }}/conduct/{{ site.index }}).
+agrees to abide by our [code of conduct]({% link CODE_OF_CONDUCT.md %}).
 
 ## How to Contribute
 
@@ -51,8 +51,8 @@ and to meet some of our community members.
 ## Where to Contribute
 
 1.  If you wish to change this lesson,
-    please work in <https://github.com/swcarpentry/shell-extras>,
-    which can be viewed at <https://swcarpentry.github.io/shell-extras>.
+    please work in <https://github.com/carpentries-incubator/shell-extras>,
+    which can be viewed at <https://carpentries-incubator.github.io/shell-extras>.
 
 2.  If you wish to change the example lesson,
     please work in <https://github.com/swcarpentry/lesson-example>,
@@ -144,7 +144,7 @@ You can also [reach us by email][contact].
 [dc-issues]: https://github.com/issues?q=user%3Adatacarpentry
 [dc-lessons]: http://datacarpentry.org/lessons/
 [dc-site]: http://datacarpentry.org/
-[discuss-list]: http://lists.software-carpentry.org/listinfo/discuss
+[discuss-list]: https://carpentries.topicbox.com/groups/discuss
 [example-site]: https://swcarpentry.github.io/shell-extras/
 [github]: http://github.com
 [github-flow]: https://guides.github.com/introduction/flow/
