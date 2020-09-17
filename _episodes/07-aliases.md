@@ -48,7 +48,7 @@ pwd
 ~~~
 /usr
 ~~~
-{ .output}
+{: .output}
 
 We can also remove a shortcut with `unalias`.
 
