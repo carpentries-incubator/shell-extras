@@ -48,7 +48,7 @@ pwd
 ~~~
 /usr
 ~~~
-{ .output}
+{: .output}
 
 We can also remove a shortcut with `unalias`.
 
@@ -72,7 +72,7 @@ login shells.  If the `.bash_logout` file exists, then it will be run
 after exiting a shell session.
 
 Let's add the above commands to our `.bashrc` file.
-
+Be careful to append to `.bashrc`, with `>>`. for concatenate, rather than one `>` which would overwrite.
 ~~~
 echo "alias up='cd ..'" >> ~/.bashrc
 tail -n 1 ~/.bashrc
@@ -84,7 +84,7 @@ alias up='cd ..'
 ~~~
 {: .output}
 
-We can execute the commands in `.bashrc` using `source`
+We can execute the commands in `.bashrc` using `source`, so this creates the alias `up` which we can then use in directory `/usr/local/bin`:
 
 ~~~
 source ~/.bashrc
