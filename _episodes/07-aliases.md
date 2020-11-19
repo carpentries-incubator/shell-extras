@@ -72,7 +72,7 @@ login shells.  If the `.bash_logout` file exists, then it will be run
 after exiting a shell session.
 
 Let's add the above commands to our `.bashrc` file.
-Be careful to append to .bashrc, with >>. for concatenate, rather than one > which would overwrite.
+Be careful to append to `.bashrc`, with `>>`. for concatenate, rather than one `>` which would overwrite.
 ~~~
 echo "alias up='cd ..'" >> ~/.bashrc
 tail -n 1 ~/.bashrc
