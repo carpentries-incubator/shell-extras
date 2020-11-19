@@ -84,7 +84,7 @@ alias up='cd ..'
 ~~~
 {: .output}
 
-We can execute the commands in `.bashrc` using `source`
+We can execute the commands in `.bashrc` using `source`, so this creates the alias `up` which we can then use in directory `/usr/local/bin`:
 
 ~~~
 source ~/.bashrc
