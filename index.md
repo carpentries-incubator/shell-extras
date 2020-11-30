@@ -11,7 +11,7 @@ lessons on particular shell features that are useful to researchers.
 > ## Prerequisites
 >
 > All of this material assumes that learners have mastered
-> the basic Unix shell lesson.  
+> the basic [Unix Shell](http://swcarpentry.github.io/shell-novice/) lesson.  
 {: .prereq}
 
 {% include links.md %}
