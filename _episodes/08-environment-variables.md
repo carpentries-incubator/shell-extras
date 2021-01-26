@@ -3,9 +3,12 @@ title: Shell Variables
 teaching: 10
 exercises: 0
 questions:
-- "How to change shell variables"
+- "How are variables set and accessed in the Unix shell?"
 objectives:
-- "Understanding shell variables"
+- "Understand how variables are implemented in the shell"
+- "Explain how the shell uses the PATH variable to search for executables"
+- "Read the value of an existing variable"
+- "Create new variables and change their values"
 keypoints:
 - "FIXME"
 ---
