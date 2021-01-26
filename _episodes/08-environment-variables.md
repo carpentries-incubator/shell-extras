@@ -10,7 +10,9 @@ objectives:
 - "Read the value of an existing variable"
 - "Create new variables and change their values"
 keypoints:
-- "FIXME"
+- "Shell variables are by default treated as strings"
+- "The `PATH` variable defines the shell's search path"
+- "Variables are assigned using \"`=`\" and recalled using the variable's name prefixed by \"`$`\""
 ---
 
 The shell is just a program, and like other programs, it has variables.
