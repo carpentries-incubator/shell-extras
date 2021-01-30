@@ -3,11 +3,16 @@ title: Shell Variables
 teaching: 10
 exercises: 0
 questions:
-- "How to change shell variables"
+- "How are variables set and accessed in the Unix shell?"
 objectives:
-- "Understanding shell variables"
+- "Understand how variables are implemented in the shell"
+- "Explain how the shell uses the `PATH` variable to search for executables"
+- "Read the value of an existing variable"
+- "Create new variables and change their values"
 keypoints:
-- "FIXME"
+- "Shell variables are by default treated as strings"
+- "The `PATH` variable defines the shell's search path"
+- "Variables are assigned using \"`=`\" and recalled using the variable's name prefixed by \"`$`\""
 ---
 
 The shell is just a program, and like other programs, it has variables.
