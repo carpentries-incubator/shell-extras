@@ -1,3 +1,4 @@
+
 ---
 title: "Transferring Files"
 teaching: 10
@@ -21,25 +22,24 @@ we can use tools such as Wget, cURL, and lftp.
 
 Wget is a simple tool developed for the GNU Project that downloads files with the HTTP, HTTPS and FTP protocols. It is widely used by Unix-like users and is available with most Linux distributions.
 
-To download this lesson (located at http://swcarpentry.github.io/shell-extras/03-file-transfer.html) from the web via HTTP we can simply type:
+To download this lesson (located at https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html) from the web via HTTP we can simply type:
 
 ~~~
-$ wget http://swcarpentry.github.io/shell-extras/03-file-transfer.html
+$ wget https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
 ~~~
 {: .bash}
 
 ~~~
---2014-11-21 09:41:31--  
-http://swcarpentry.github.io/shell-extras/03-file-transfer.html
-Resolving software-carpentry.org (software-carpentry.org)... 174.136.14.108
-Connecting to software-carpentry.org (software-carpentry.org)|174.136.14.108|:80... connected.
+--2021-05-29 02:12:18—  
+https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
+Resolving carpentries-incubator.github.io (carpentries-incubator.github.io)... 185.199.111.153, 185.199.110.153, 185.199.109.153, ...
+Connecting to carpentries-incubator.github.io (carpentries-incubator.github.io)|185.199.111.153|:443... connected.
 HTTP request sent, awaiting response... 200 OK
-Length: 8901 (8.7K) [text/html]
-Saving to: '03-file_transfer.html'
+Length: 22467 (22K) [text/html]
+Saving to: ‘index.html’
+index.html        100%[===================>]  21.94K  --.-KB/s    in 0.003s  
 
-100%[======================================>] 8,901       --.-K/s   in 0.05s   
-
-2014-11-21 09:41:31 (187 KB/s) - '03-file_transfer.html' saved [8901/8901]
+2021-05-29 02:12:19 (6.35 MB/s) - ‘index.html’ saved [22467/22467]
 ~~~
 {: .output}
 
@@ -55,7 +55,7 @@ where `-r` means recursively crawl to other files and directories, `-np` means a
 For our URL it would be:
 
 ~~~
-$ wget -r -np -D software-carpentry.org http://swcarpentry.github.io/shell-extras/03-file-transfer.html
+$ wget -r -np -D software-carpentry.org http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
 ~~~
 {: .bash}
 
@@ -63,7 +63,7 @@ To restrict retrieval to a particular extension(s)
 we can use the `-A` option followed by a comma separated list:
 
 ~~~
-wget -r -np -D software-carpentry.org -A html http://swcarpentry.github.io/shell-extras/03-file-transfer.html
+wget -r -np -D software-carpentry.org -A html http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
 ~~~
 {: .bash}
 
@@ -106,11 +106,11 @@ Please refer to the man page by typing `man wget` in the shell for more informat
 Alternatively, we can use `cURL`.
 It supports a much larger range of protocols including common mail based protocols like pop3 and smtp. 
 
-To download this lesson (located at http://swcarpentry.github.io/shell-extras/03-file-transfer.html)
+To download this lesson (located at http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html)
 from the web via HTTP we can simply type:
 
 ~~~
-$ curl -o 10-file_transfer.html http://swcarpentry.github.io/shell-extras/03-file-transfer.html
+$ curl -o index.html http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
 ~~~
 {: .bash}
 
@@ -138,22 +138,22 @@ If we wanted to enhance the functionality we have we could use information from 
 which is lesson 4 from the unix shell session.
 
 For example, we could type
-`curl http://swcarpentry.github.io/shell-extras/03-file-transfer.html | grep curl`
+`curl http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | grep curl`
 which would tell us that indeed this URL contains the string curl.
 We could make the output cleaner by limiting the output of curl to just the file contents by using the `-s` option
-(e.g. `curl -s http://swcarpentry.github.io/shell-extras/03-file-transfer.html | grep curl`). 
+(e.g. `curl -s http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | grep curl`). 
 
 If we wanted only the text and not the html tags in our output we could use html to text parser such as `html2text`.
 
 ~~~
-$ curl -s http://swcarpentry.github.io/shell-extras/03-file-transfer.html | html2text | grep curl
+$ curl -s http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | html2text | grep curl
 ~~~
 {: .bash}
 
 With `wget`, we can obtain the same results by typing:
 
 ~~~
-$ wget -q -D swcarpentry.github.io -O /dev/stdout http://swcarpentry.github.io/shell-extras/03-file-transfer.html | html2text | grep curl
+$ wget -q -D swcarpentry.github.io -O /dev/stdout http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | html2text | grep curl
 ~~~
 {: .bash}
 
@@ -169,17 +169,17 @@ Please refer to the man pages by typing `man wget`, `man curl`, and `man html2te
 
 Another option is `lftp`. It has a lot of capability, and even does simple bittorrent. 
 
-If we want to retrieve `03-file-transfer.html` on the website and save it with the filename `03-file-transfer.html` locally:
+If we want to retrieve `index.html` on the website and save it with the filename `index.html` locally:
 
 ~~~
-$ lftp -c get http://swcarpentry.github.io/shell-extras/03-file-transfer.html
+$ lftp -c get http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
 ~~~
 {: .bash}
 
-If we want to print `03-file-transfer.html` to the screen instead:
+If we want to print `.html` to the screen instead:
 
 ~~~
-$ lftp -c cat http://swcarpentry.github.io/shell-extras/03-file-transfer.html
+$ lftp -c cat http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
 ~~~
 {: .bash}
 
@@ -193,10 +193,11 @@ $ lftp -c mget {URL for directory}/*.extension_name
 For example, to retrieve all of the `.html` files in the extras folder:
 
 ~~~
-$ lftp -c mget http://swcarpentry.github.io/shell-extras/*.html
+$ lftp -c mget http://carpentries-incubator.github.io/shell-extras/*.html
 ~~~
 {: .bash}
 
 Please refer to the man page by typing `man lftp` in the shell for more information.
 
 {% include links.md %}
+
