@@ -160,6 +160,23 @@ $ pwd
 ~~~
 {: .output}
 
+> ## Logging into a remote system
+> Open a connection to a remote system you have access to.
+> The first time you connect to a remote computer you will see a message saying that the authenticity of the host can't be established. This is normal and because you've never connected to that computer before, so we have no record of key fingerprint which identifies that computer. If you receive this message on a subsequent connection then it is a sign that the remote computer has been reinstalled or (much less likely) that somebody is interferring with the encryption of your connection. To accept the fingerprint of the remote system you must type "yes".
+> 
+{: .challenge}
+
+> ## Differences between remote and local system
+>
+> Open a second terminal window on your local computer. What differences do you see? Are the prompts the same?
+> Run the `ls` command and see if the output style looks the same.
+>
+> > ## Solution
+> >
+> > You might find that the prompt has different information and if it displays a host (computer) name then this should be different. This is very important for making sure you know what system you are issuing commands on when in the shell.You might also find the colours are different, especially when running the `ls` command.
+> {: .solution}
+{: .challenge}
+
 ## Copying files to, and from a remote machine using `scp`
 
 To copy a file,
@@ -232,6 +249,22 @@ results-2011-10-28.dat              100%  8  1.0 MB/s 00:00
 results-2011-11-11.dat              100%  9  1.0 MB/s 00:00
 ~~~
 {: .output}
+
+> ## Choose the right command
+> Which of the following would you use to copy a directory called `data` and all the files and subdirectories contained within it to the /data directory on a remote computer called `datastore.euphoric.edu`:
+>
+> 1. scp data vlad@datastore.euphoric.edu
+> 2. cp -r data vlad@datastore.euphoric.edu:
+> 3. scp -r data vlad@datastore.euphoric.edu:/data
+> 4. scp data vlad@datastore.euphoric.edu:
+>
+> > ## Solution
+> > 3 is the correct answer. 
+> > 1 does not have -r option to copy all subdirectories and is missing the : to specify the path on the remote computer. It will create a file called vlad@datastore.euphoric.edu on the local computer.
+> > 2 uses the cp command instead of scp, it will only copy files on the local computer.
+> > 4 is missing the -r option to copy the subdirecotries and doesn't specify /data as the destination path.
+> {: .solution}
+{: .challenge}
 
 ## Running commands on a remote machine using `ssh`
 
@@ -385,6 +418,12 @@ you setup your SSH key correctly you won't need to type your password.
 $ ssh vlad@moon.euphoric.edu
 ~~~
 {: .bash}
+
+> ## Add (or change) a key's passphrase 
+> Add a passphrase your key with the command `ssh-keygen -p`. 
+> Now attempt to login to a remote computer, you should be prompted to enter your passphrase.
+{: .challenge}
+
 
 ## SSH Files and Directories
 
