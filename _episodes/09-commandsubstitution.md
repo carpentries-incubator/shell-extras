@@ -40,7 +40,7 @@ $ for cutoff in 0.001 0.01 0.05; do
 
 In the second example, the things to loop over: `"0.001 0.01 0.05"` are spelled out by you.
 
-## Looping over the words in a string {.callout}
+## Looping over the words in a string
 >
 > In the previous example you can make your code neater and self-documenting by putting the cutoff values
 > in a separate string:
@@ -53,6 +53,7 @@ In the second example, the things to loop over: `"0.001 0.01 0.05"` are spelled 
 > {: .bash}
 > This works because, just as with the filename wildcards, `$cutoffs` is replaced with `0.001 0.01 0.05` 
 > before the loop starts. 
+{: .callout}
 
 However, you don't always know in advance *what* you have to loop
 over. It could well be that it is not a simple file name pattern (in
@@ -148,7 +149,7 @@ command, or even pipeline, can also be used. For example, if
 try the first two for a test run, you can use the `head` command to just
 get the first few lines of its argument, like so:
 
-~~~ {.bash}
+~~~ 
 $ for file in $(cat cohort2010.txt | head -n 2)
 > do
 >     ...
@@ -182,41 +183,46 @@ output works best within single commands and whitespace- or
 newline-separated words works best for lists over which to iterate in
 loops.
 
-> ## Generating filenames based on a timestamp {.challenge}
-> 
-> It can be useful to create the filename 'on the fly'. For instance, if
-> some program called `qualitycontrol` is run periodically (or
-> unpredictably) it may be necessary to supply the time stamp as an
-> argument to keep all the output files apart, along the following lines:
-> 
+> > ## Generating filenames based on a timestamp 
+> > 
+> > It can be useful to create the filename 'on the fly'. For instance, if
+> > some program called `qualitycontrol` is run periodically (or
+> > unpredictably) it may be necessary to supply the time stamp as an
+> > argument to keep all the output files apart, along the following lines:
+> > 
+> > ~~~
+> > qualitycontrol --inputdir /data/incoming/  --output qcresults-[INSERT TIMESTAMP HERE].txt
+> > ~~~
+> > 
+> > Getting `[INSERT TIMESTAMP HERE]` to work is a job for the command subsitution
+> > operator. The Unix command you need here is the `date` command, which provides you
+> > with the current date and time (try it).
+> > 
+> > In the current form, its output is less useful for generating filenames
+> > because it contains whitespace (which, as we know from now, should
+> > preferably be avoided in filenames).  You can tweak `date`'s format in
+> > great detail, for instance to get rid of whitespace:
+> > 
+> > ~~~
+> > $ date +"%Y-%m-%d_%T"
+> > ~~~
+> > 
+> > (Try it).
+> > 
+> > Write the command that will copy a file of your choice to a new file
+> > whose name contains the time stamp. Test it by executing the command a
+> > few times, waiting a few seconds between invocations (use the arrow-up
+> > key to avoid having to retype the command)
+> > 
 > ~~~
-> qualitycontrol --inputdir /data/incoming/  --output qcresults-[INSERT TIMESTAMP HERE].txt
+> cp file file.$(date +"%Y-%m-%d_%T")
 > ~~~
-> 
-> Getting `[INSERT TIMESTAMP HERE]` to work is a job for the command subsitution
-> operator. The Unix command you need here is the `date` command, which provides you
-> with the current date and time (try it).
-> 
-> In the current form, its output is less useful for generating filenames
-> because it contains whitespace (which, as we know from now, should
-> preferably be avoided in filenames).  You can tweak `date`'s format in
-> great detail, for instance to get rid of whitespace:
-> 
-> ~~~
-> $ date +"%Y-%m-%d_%T"
-> ~~~
-> 
-> (Try it).
-> 
-> Write the command that will copy a file of your choice to a new file
-> whose name contains the time stamp. Test it by executing the command a
-> few times, waiting a few seconds between invocations (use the arrow-up
-> key to avoid having to retype the command)
-<!-- solution: cp file file.$(date +"%Y-%m-%d_%T") -->
+> {: .bash}
+> {: .solution}
+{: .challenge}
 
 
-## Juggling filename extensions {.challenge}
-
+## Juggling filename extensions 
 > When running an analysis program with a certain input file, it
 > is often required that the output has the same name as the input, but with
 > a different filename extension, e.g.
@@ -239,15 +245,20 @@ loops.
 >
 >
 > Write a loop that uses the command substitution operator and the
-> `basename` command to sort each of the `*.pdb` files into a
-> corresponding `*.sorted` file. That is, make the loop do the
-> following:
->
+> > `basename` command to sort each of the `*.pdb` files into a
+> > corresponding `*.sorted` file. That is, make the loop do the
+> > following:
+> >
+> > ~~~
+> > $ sort ammonia.pdb > ammonia.sorted
+> > ~~~
+> > but for *each* of the `.pdb`-files.
 > ~~~
-> $ sort ammonia.pdb > ammonia.sorted
+> for file in *.pdb; do sort $file > $(basename $file .pdb).sorted; done
 > ~~~
-> but for *each* of the `.pdb`-files.
-<!-- solution: for file in *.pdb; do sort $file > $(basename $file .pdb).sorted; done -->
+> {: .bash}
+> {: .solution}
+{: .challenge}
 
 ## Closing remarks
 
