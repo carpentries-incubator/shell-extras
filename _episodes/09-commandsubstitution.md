@@ -3,25 +3,25 @@ layout: page
 title: The Unix Shell
 subtitle: Command Subsitution
 minutes: 15
+objectives:
+- Understand the need for flexibility regarding arguments
+- Generate the values of the arguments on the fly using command substitution
+- Understand the difference between pipes/redirection, and the command substitution operator
 ---
-> ## Learning Objectives {.objectives}
->
-> * Understand the need for flexibility regarding arguments
-> * Generate the values of the arguments on the fly using command substitution
-> * Understand the difference between pipes/redirection, and the command substitution operator
 
 ## Introduction
 
 In the *Loops* topic we saw how to improve productivity by letting the computer do the repetitive work.
 Often, this involves doing the same thing to a whole set of files, e.g.:
 
-~~~{.bash}
+~~~
 $ cd data/pdb
 $ mkdir sorted
 $ for file in cyclo*.pdb; do
 >     sort $file > sorted/sorted-$file
 > done
 ~~~
+{: .bash}
 
 In this example, the shell generates for us the list of things to loop
 over, using the wildcard mechanism we saw in the *Pipes and Filters* topic. This results in the
@@ -31,11 +31,12 @@ cyclopropane.pdb ethylcyclohexane.pdb` before the loop starts.
 Another example is a so-called *parameter sweep*, where you run the same program a number of times
 with different arguments. Here is a fictitional example:
 
-~~~{.bash}
+~~~
 $ for cutoff in 0.001 0.01 0.05; do
 >   run_classifier.sh --input ALL-data.txt --pvalue $cutoff --output results-$cutoff.txt
 > done
 ~~~
+{: .bash}
 
 In the second example, the things to loop over: `"0.001 0.01 0.05"` are spelled out by you.
 
@@ -49,6 +50,7 @@ In the second example, the things to loop over: `"0.001 0.01 0.05"` are spelled 
 >   run_classifier.sh --input ALL-data.txt --pvalue $cutoff --output results-$cutoff.txt
 > done
 > ~~~
+> {: .bash}
 > This works because, just as with the filename wildcards, `$cutoffs` is replaced with `0.001 0.01 0.05` 
 > before the loop starts. 
 
@@ -68,6 +70,7 @@ $ for file in [INSERT THE CONTENTS OF cohort2010.txt HERE]
 >    run_classifier.sh --input $file --pvalue -0.05 --output $file.results
 > done
 ~~~
+{: .bash}
 
 ## Command substitution
 
@@ -78,13 +81,14 @@ desired names of input files, just before the loop starts.  Thankfully,
 this mechanism exists, and it is called the **command substitution operator**
 (previously written using the **backtick operator**). It looks much like the previous snippet:
 
-~~~ {.bash}
+~~~ 
 # (actual syntax)
 $ for file in $(cat cohort2010.txt)
 > do
 >    run_classifier.sh --input $file --pvalue -0.05 --output $file.results
 > done
 ~~~
+{: .bash}
 
 It works simply as follows: everything between the `$(` and the `)` is
 executed as a Unix command, and the command's standard output replaces
@@ -113,6 +117,7 @@ patient7448262.txt
 .
 patient1820757.txt
 ~~~
+{: .output}
 
 then the construct
 
@@ -122,6 +127,7 @@ $ for file in $(cat cohort2010.txt)
 >     ...
 > done
 ~~~
+{: .bash}
 
 will be expanded to 
 
@@ -131,6 +137,7 @@ $ for file in patient1033130.txt patient1048338.txt patient7448262.txt ... patie
 >     ...
 > done
 ~~~
+{: .bash}
 
 (notice the convenience of newlines having been replaced with simple spaces).
 
@@ -147,15 +154,17 @@ $ for file in $(cat cohort2010.txt | head -n 2)
 >     ...
 > done
 ~~~
+{: .bash}
 
 which will expand to
 
-~~~ {.bash}
+~~~
 $ for file in patient1033130.txt patient1048338.txt
 > do
 >     ...
 > done
 ~~~
+{: .bash}
 
 simply because `cat cohort2010.txt | head -n 2` produces
 `patient1033130.txt patient1048338.txt` after the command substitution.
@@ -218,13 +227,15 @@ loops.
 >
 > A good trick here is to use the Unix `basename` command. It takes a string (typically a filename),
 > and strips off the given extension (if it is part of the input string). Example:
-> ~~~ {.bash}
+> ~~~ 
 > $ basename patient1048338.txt    .txt
 > ~~~
+> {: .bash}
 > gives
-> ~~~ {.output}
+> ~~~ 
 > patient1048338
 > ~~~
+> {: .output}
 >
 >
 > Write a loop that uses the command substitution operator and the
