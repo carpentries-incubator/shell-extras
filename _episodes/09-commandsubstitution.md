@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Shell Variables
-subtitle: Command Subsitution
+title: Command Substitution
+subtitle: How to substitute variables with command outputs.
 minutes: 15
 objectives:
 - Understand the need for flexibility regarding arguments
