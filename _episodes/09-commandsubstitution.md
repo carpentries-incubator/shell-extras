@@ -2,7 +2,7 @@
 title: Command Substitution
 questions: 
 - How to substitute variables with command outputs.
-teacing: 15
+teaching: 15
 exercises: 0
 objectives:
 - Understand the need for flexibility regarding arguments

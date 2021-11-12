@@ -2,7 +2,7 @@
 title: AWK
 questions: 
 - How to manipulate and filtering complex data
-teacing: 15
+teaching: 15
 exercises: 0
 objectives:
 - Explain why AWK is useful and when it is better than pipes.
