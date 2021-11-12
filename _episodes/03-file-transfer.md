@@ -165,9 +165,9 @@ Please refer to the man pages by typing `man wget`, `man curl`, and `man html2te
 > Start a download of a large file (e.g. http://mirrorservice.org/sites/cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-11.1.0-amd64-standard.iso) using wget and stop the download before it has finished by pressing the 'ctrl' and 'c' keys together. This will leave a partially downloaded file on your computer. 
 > Open the wget man page by running `man wget` and find the option to continue a partial download. 
 > Resume your download with this option.
-> The -c or --continue option will tell wget to resume a partial download.
 >
 > > ## Solution
+> >The -c or --continue option will tell wget to resume a partial download.
 > > ~~~
 > > wget -c http://mirrorservice.org/sites/cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-11.1.0-amd64-standard.iso
 > > ~~~
