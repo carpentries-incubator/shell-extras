@@ -96,9 +96,10 @@ $ awk '{print "This line has",NF,"columns. The last one contains",$NF}' example.
 ~~~
 {: .bash}
 
-> ## Field separator {.callout}
+> ## Field separator 
 > Out there we have different file formats: our data may be comma separated (csv),
 > tab separated (tsv), by semicolon or by any other character.
+{: .callout}
 
 To specify the field separator, we should provide it at command line like:
 
@@ -107,12 +108,9 @@ $ awk -F "," '{print $2}' example2.txt
 ~~~
 {: .bash}
 
-In this case , we are printing the second field in each line, using comma as separator.
+In this case, we are printing the second field in each line, using comma as separator.
 Please notice that the character space is now part of the field value, since it is no
 longer the separator.
-
-> ## Matching lines {.callout}
-> Maybe we would like to perform different instruction on different lines.
 
 Awk allows you to specify a matching pattern, like the command grep does.
 
