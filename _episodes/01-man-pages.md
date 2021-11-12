@@ -161,4 +161,15 @@ it will often produce more helpful results.
 > it doesn't work in reverse...
 {: .callout}
 
+> ## Looking up information in a man page
+> Open the manpage for the ssh command by running `man ssh`
+> 1. Find out what the `-q` option does
+> 2. What is the `~/.ssh/` directory used for?
+>  > ## Solution
+>  > 1. Enables quiet mode, suppressing most error messages and warnings.
+>  > 2. It is the default location to store user-specific configuration data.
+>  {: .solution}
+{: .challenge}
+
+
 {% include links.md %}
