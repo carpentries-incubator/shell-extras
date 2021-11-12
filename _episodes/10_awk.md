@@ -12,7 +12,10 @@ objectives:
 - Introduce BEGIN and END keywords.
 - Use the if then structure to change behaviour for the same matching regex.
 - Introduce the array data structure.
--  Use the for loop to cycle through an array
+- Use the for loop to cycle through an array
+keypoints:
+- Awk is a useful utility for breaking up data into subfields.
+- Awk can search for certain text to only process certain lines of a file.
 ---
 
 If we need to count the number of lines in a file, we can use the previously
