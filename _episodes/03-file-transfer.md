@@ -6,7 +6,7 @@ exercises: 5
 questions:
 - "How to use wget, curl and rsync to transfer file?"
 objectives:
-- "FIXME"
+- "Understand that wget, curl and rsync can transfer files"
 keypoints:
 - "wget is a utility for downloading remote webpages. It includes options to mirror an entire site."
 - "curl is another utility for downloading remote webpages. It defaults to outputting the result on screen, this can be piped to other programs."

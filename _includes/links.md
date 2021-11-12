@@ -1,0 +1,1 @@
+[manpages]: https://manpages.debian.org/contents-buster.html
