@@ -1,6 +1,6 @@
 ---
 title: Aliases and bash customization
-teaching: 10 minutes
+teaching: 10
 exercises: 0
 questions:
 - How do I customize my bash environment?
