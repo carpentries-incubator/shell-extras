@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Command Substitution
 questions: 
 - How to substitute variables with command outputs.
