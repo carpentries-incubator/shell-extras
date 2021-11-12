@@ -2,7 +2,8 @@
 layout: page
 title: Command Substitution
 subtitle: How to substitute variables with command outputs.
-minutes: 15
+teacing: 15
+exercises: 0
 objectives:
 - Understand the need for flexibility regarding arguments
 - Generate the values of the arguments on the fly using command substitution
