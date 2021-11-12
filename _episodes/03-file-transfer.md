@@ -166,6 +166,8 @@ Please refer to the man pages by typing `man wget`, `man curl`, and `man html2te
 > Open the wget man page by running `man wget` and find the option to continue a partial download. 
 > Resume your download with this option.
 > The -c or --continue option will tell wget to resume a partial download.
+>
+> > ## Solution
 > > ~~~
 > > wget -c http://mirrorservice.org/sites/cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-11.1.0-amd64-standard.iso
 > > ~~~
@@ -189,4 +191,3 @@ rsync -a -v -e ssh 03-file-transfer vlad@euphoric.edu:
 Rsync only transfers files if they don't exist in the destination directory. This means that if a transfer is stopped for any reason, when you resume it won't copy things that were already copied. Scp does not do this and will start the transfer again. If you are copying large files that take many days/hours there is a chance your transfer might be interrupted at some point and you don't want to have to repeat what you've already done when resuming it.
 
 {% include links.md %}
-
