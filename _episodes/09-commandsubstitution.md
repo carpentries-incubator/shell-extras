@@ -1,7 +1,8 @@
 ---
 layout: page
 title: Command Substitution
-subtitle: How to substitute variables with command outputs.
+questions: 
+- How to substitute variables with command outputs.
 teacing: 15
 exercises: 0
 objectives:

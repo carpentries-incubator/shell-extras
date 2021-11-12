@@ -1,6 +1,7 @@
 ---
 title: AWK
-subtitle: Manipulating and filtering complex data
+questions: 
+- How to manipulate and filtering complex data
 teacing: 15
 exercises: 0
 objectives:
