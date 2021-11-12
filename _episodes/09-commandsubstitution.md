@@ -224,7 +224,7 @@ loops.
 {: .challenge}
 
 
-## Juggling filename extensions 
+> ## Juggling filename extensions 
 > When running an analysis program with a certain input file, it
 > is often required that the output has the same name as the input, but with
 > a different filename extension, e.g.
@@ -247,18 +247,19 @@ loops.
 >
 >
 > Write a loop that uses the command substitution operator and the
-> > `basename` command to sort each of the `*.pdb` files into a
-> > corresponding `*.sorted` file. That is, make the loop do the
-> > following:
-> >
-> > ~~~
-> > $ sort ammonia.pdb > ammonia.sorted
-> > ~~~
-> > but for *each* of the `.pdb`-files.
+> `basename` command to sort each of the `*.pdb` files into a
+> corresponding `*.sorted` file. That is, make the loop do the
+> following:
 > ~~~
-> for file in *.pdb; do sort $file > $(basename $file .pdb).sorted; done
+> $ sort ammonia.pdb > ammonia.sorted
 > ~~~
-> {: .bash}
+> but for *each* of the `.pdb`-files.
+>
+> > ## Solution
+> > ~~~
+> > for file in *.pdb; do sort $file > $(basename $file .pdb).sorted; done
+> > ~~~
+> > {: .bash}
 > {: .solution}
 {: .challenge}
 
