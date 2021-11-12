@@ -1,6 +1,6 @@
 ---
 layout: page
-title: The Unix Shell
+title: Shell Variables
 subtitle: Command Subsitution
 minutes: 15
 objectives:
@@ -184,40 +184,41 @@ newline-separated words works best for lists over which to iterate in
 loops.
 
 > > ## Generating filenames based on a timestamp 
-> > 
-> > It can be useful to create the filename 'on the fly'. For instance, if
-> > some program called `qualitycontrol` is run periodically (or
-> > unpredictably) it may be necessary to supply the time stamp as an
-> > argument to keep all the output files apart, along the following lines:
-> > 
-> > ~~~
-> > qualitycontrol --inputdir /data/incoming/  --output qcresults-[INSERT TIMESTAMP HERE].txt
-> > ~~~
-> > 
-> > Getting `[INSERT TIMESTAMP HERE]` to work is a job for the command subsitution
-> > operator. The Unix command you need here is the `date` command, which provides you
-> > with the current date and time (try it).
-> > 
-> > In the current form, its output is less useful for generating filenames
-> > because it contains whitespace (which, as we know from now, should
-> > preferably be avoided in filenames).  You can tweak `date`'s format in
-> > great detail, for instance to get rid of whitespace:
-> > 
-> > ~~~
-> > $ date +"%Y-%m-%d_%T"
-> > ~~~
-> > 
-> > (Try it).
-> > 
-> > Write the command that will copy a file of your choice to a new file
-> > whose name contains the time stamp. Test it by executing the command a
-> > few times, waiting a few seconds between invocations (use the arrow-up
-> > key to avoid having to retype the command)
-> > 
+>
+> It can be useful to create the filename 'on the fly'. For instance, if
+> some program called `qualitycontrol` is run periodically (or
+> unpredictably) it may be necessary to supply the time stamp as an
+> argument to keep all the output files apart, along the following lines:
+> 
 > ~~~
-> cp file file.$(date +"%Y-%m-%d_%T")
+> qualitycontrol --inputdir /data/incoming/  --output qcresults-[INSERT TIMESTAMP HERE].txt
 > ~~~
-> {: .bash}
+>
+> Getting `[INSERT TIMESTAMP HERE]` to work is a job for the command subsitution
+> operator. The Unix command you need here is the `date` command, which provides you
+> with the current date and time (try it).
+>
+> In the current form, its output is less useful for generating filenames
+> because it contains whitespace (which, as we know from now, should
+> preferably be avoided in filenames).  You can tweak `date`'s format in
+> great detail, for instance to get rid of whitespace:
+>
+> ~~~
+> $ date +"%Y-%m-%d_%T"
+> ~~~
+> 
+> (Try it).
+> 
+> Write the command that will copy a file of your choice to a new file
+> whose name contains the time stamp. Test it by executing the command a
+> few times, waiting a few seconds between invocations (use the arrow-up
+> key to avoid having to retype the command)
+>
+> > ## Solution
+> > ~~~
+> > cp file file.$(date +"%Y-%m-%d_%T")
+> > ~~~
+> > {: .bash}
 > {: .solution}
 {: .challenge}
 
