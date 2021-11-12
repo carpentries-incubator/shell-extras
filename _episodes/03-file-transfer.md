@@ -2,21 +2,18 @@
 ---
 title: "Transferring Files"
 teaching: 10
-exercises: 0
+exercises: 5
 questions:
-- "How to use wget, curl and lftp to transfer file?"
+- "How to use wget, curl and rsync to transfer file?"
 objectives:
 - "FIXME"
 keypoints:
-- "FIXME"
+- "wget is a utility for downloading remote webpages. It includes options to mirror an entire site."
+- "curl is another utility for downloading remote webpages. It defaults to outputting the result on screen, this can be piped to other programs."
+- "rsync is a utility for transferring files. It can use the SSH protocol and is useful for mirroring complicated directory structures from one computer to another."
 ---
 
-There are other ways to interact with remote files other than git.
-
-It is true that we can clone an entire git repository, or even one level of a git repository using:
-`git clone --depth-1 repository_name`.
-What about files that do not exist in a git repository? If we wish to download files from the shell
-we can use tools such as Wget, cURL, and lftp.
+There are other ways to interact with remote files other than scp.
 
 ## Wget
 
@@ -165,39 +162,32 @@ The situation may be improved by combining with other unix tools, but is not tho
 
 Please refer to the man pages by typing `man wget`, `man curl`, and `man html2text` in the shell for more information. 
 
-## lftp
+> ## Continuing a stopped download
+> Start a download of a large file (e.g. http://mirrorservice.org/sites/cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-11.1.0-amd64-standard.iso) using wget and stop the download before it has finished by pressing the 'ctrl' and 'c' keys together. This will leave a partially downloaded file on your computer. 
+> Open the wget man page by running `man wget` and find the option to continue a partial download. 
+> Resume your download with this option.
+> The -c or --continue option will tell wget to resume a partial download.
+> > ~~~
+> > wget -c http://mirrorservice.org/sites/cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-11.1.0-amd64-standard.iso
+> > ~~~
+> > {: .bash}
+> {: .solution}
+{: .challenge}
 
-Another option is `lftp`. It has a lot of capability, and even does simple bittorrent. 
+## rsync
 
-If we want to retrieve `index.html` on the website and save it with the filename `index.html` locally:
+Rsync is a utility for synchronising directories between computers (and on the same computer). It can use the SSH protocol for copying to a remote computer but also has it's own (less commonly used) file transfer protocol. 
 
-~~~
-$ lftp -c get http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
-~~~
-{: .bash}
-
-If we want to print `.html` to the screen instead:
-
-~~~
-$ lftp -c cat http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
-~~~
-{: .bash}
-
-To obtain retrive all of the files with a particular extension in a directory we can type:
-
-~~~
-$ lftp -c mget {URL for directory}/*.extension_name
-~~~
-{: .bash}
-
-For example, to retrieve all of the `.html` files in the extras folder:
+### Rsync Syntax
+The -a option to rsync specifies that we want to use "archive" mode, which will set several other options to make the copy mirror the names and permissions of the source directory. The -v option enables verbose mode to tell us more about what is being copied. To use rsync over ssh we need to specify "-e ssh". Finally we give the source and destination directories, just like the cp or scp command. 
 
 ~~~
-$ lftp -c mget http://carpentries-incubator.github.io/shell-extras/*.html
+rsync -a -v -e ssh 03-file-transfer vlad@euphoric.edu:
 ~~~
 {: .bash}
 
-Please refer to the man page by typing `man lftp` in the shell for more information.
+### Why use rsync instead of scp?
+Rsync only transfers files if they don't exist in the destination directory. This means that if a transfer is stopped for any reason, when you resume it won't copy things that were already copied. Scp does not do this and will start the transfer again. If you are copying large files that take many days/hours there is a chance your transfer might be interrupted at some point and you don't want to have to repeat what you've already done when resuming it.
 
 {% include links.md %}
 
