@@ -8,7 +8,7 @@ There are no files to download for this lesson.
 
 
 ## Open a new shell
-This lesson supplements material covered in the [Introduction to the Unix Shell][install shell]. The shell software necessary for this lesson should therefore already be installed. 
+This lesson supplements material covered in the [Introduction to the Unix Shell](https://swcarpentry.github.io/shell-novice/). The shell software necessary for this lesson should therefore already be installed. 
 
 1. Open a terminal.
 2. In the terminal type `cd` then press the <kbd>Return</kbd> key.
