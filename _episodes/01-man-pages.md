@@ -1,7 +1,7 @@
 ---
 title: "Manual Pages"
 teaching: 10
-exercises: 0
+exercises: 5
 questions:
 - "How to use man pages?"
 objectives:

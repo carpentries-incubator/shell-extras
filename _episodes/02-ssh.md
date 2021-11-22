@@ -1,7 +1,7 @@
 ---
 title: "Working Remotely"
-teaching: 10
-exercises: 10
+teaching: 20
+exercises: 15
 questions:
 - "How do I use '`ssh`' and '`scp`' ?"
 objectives:

@@ -1,7 +1,7 @@
 ---
 title: "Permissions"
-teaching: 10
-exercises: 0
+teaching: 15
+exercises: 5
 questions:
 - "Understanding file/directory permissions"
 objectives:
