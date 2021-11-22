@@ -1,7 +1,7 @@
 ---
 title: "Transferring Files"
-teaching: 10
-exercises: 5
+teaching: 15
+exercises: 10
 questions:
 - "How to use wget, curl and rsync to transfer file?"
 objectives:
@@ -51,7 +51,7 @@ where `-r` means recursively crawl to other files and directories, `-np` means a
 For our URL it would be:
 
 ~~~
-$ wget -r -np -D software-carpentry.org http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
+$ wget -r -np -D carpentries-incubator.github.io http://carpentries-incubator.github.io/
 ~~~
 {: .bash}
 
@@ -59,7 +59,7 @@ To restrict retrieval to a particular extension(s)
 we can use the `-A` option followed by a comma separated list:
 
 ~~~
-wget -r -np -D software-carpentry.org -A html http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
+wget -r -np -D carpentries-incubator.github.io -A html http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html
 ~~~
 {: .bash}
 
@@ -134,22 +134,22 @@ If we wanted to enhance the functionality we have we could use information from 
 which is lesson 4 from the unix shell session.
 
 For example, we could type
-`curl http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | grep curl`
+`curl https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | grep curl`
 which would tell us that indeed this URL contains the string curl.
 We could make the output cleaner by limiting the output of curl to just the file contents by using the `-s` option
-(e.g. `curl -s http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | grep curl`). 
+(e.g. `curl -s https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | grep curl`). 
 
 If we wanted only the text and not the html tags in our output we could use html to text parser such as `html2text`.
 
 ~~~
-$ curl -s http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | html2text | grep curl
+$ curl -s https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | html2text | grep curl
 ~~~
 {: .bash}
 
 With `wget`, we can obtain the same results by typing:
 
 ~~~
-$ wget -q -D swcarpentry.github.io -O /dev/stdout http://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | html2text | grep curl
+$ wget -q -D carpentries-incubator.github.io -O /dev/stdout https://carpentries-incubator.github.io/shell-extras/03-file-transfer/index.html | html2text | grep curl
 ~~~
 {: .bash}
 
@@ -162,14 +162,14 @@ The situation may be improved by combining with other unix tools, but is not tho
 Please refer to the man pages by typing `man wget`, `man curl`, and `man html2text` in the shell for more information. 
 
 > ## Continuing a stopped download
-> Start a download of a large file (e.g. http://mirrorservice.org/sites/cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-11.1.0-amd64-standard.iso) using wget and stop the download before it has finished by pressing the 'ctrl' and 'c' keys together. This will leave a partially downloaded file on your computer. 
+> Start a download of a large file (e.g. https://www.zenodo.org/record/5307070/files/S-only-10000x.tar.gz, a file from a [dataset of simulated wastewater sequencing data for SARS-CoV-2](sars-cov2-wastewater) using wget and stop the download before it has finished by pressing the 'ctrl' and 'c' keys together. This will leave a partially downloaded file on your computer. 
 > Open the wget man page by running `man wget` and find the option to continue a partial download. 
 > Resume your download with this option.
 >
 > > ## Solution
 > >The -c or --continue option will tell wget to resume a partial download.
 > > ~~~
-> > wget -c http://mirrorservice.org/sites/cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-11.1.0-amd64-standard.iso
+> > wget -c https://www.zenodo.org/record/5307070/files/S-only-10000x.tar.gz
 > > ~~~
 > > {: .bash}
 > {: .solution}
