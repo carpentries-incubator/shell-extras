@@ -38,3 +38,4 @@
 [swc-releases]: https://github.com/swcarpentry/swc-releases
 [workshop-repo]: {{ site.workshop_repo }}
 [yaml]: http://yaml.org/
+[sars-cov2-wastewater]: https://www.zenodo.org/record/5307070
