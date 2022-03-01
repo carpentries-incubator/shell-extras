@@ -27,9 +27,13 @@ $ man cp
 
 The output displayed is referred to as the "man page".
 
-The man page will be displayed in the default file viewer for our shell,
-which usually a program called `more`.
-When `more` displays a colon ':',
+Most man pages contain much more information than can fit in one terminal screen.  
+To help facilitate reading, the `man` command tries to use a "pager" to move and search
+through the information screenfull by screenfull.  The most common pager is called `less`.
+Detailed information is available using `man less`.  `less` is typically the default 
+pager for Unix systems and other tools may use it for output paging as well.
+
+When `less` displays a colon ':',
 we can press the space bar to get the next page,
 the letter 'h' to get help,
 or the letter 'q' to quit.
@@ -122,7 +126,7 @@ then expands on the possible options one by one:
 If we want to skip ahead to the option you're interested in,
 we can search for it using the slash key '/'.
 (This isn't part of the `man` command:
-it's a feature of `more`.)
+it's a feature of `less`.)
 For example,
 to find out about `-t`,
 we can type `/-t` and press return.
