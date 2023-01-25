@@ -20,7 +20,7 @@ The shell-novice lesson explained how we run programs or scripts from
 the shell's command line.
 
 We'll now take a look at how to control programs *once they're running*. This
-is called [job control]({ page.root }}/reference/{{ site.index }}#job-control), and while it's less
+is called [job control]({{ page.root }}/reference/{{ site.index }}#job-control), and while it's less
 important today than it was back in the Dark Ages, it is coming back
 into its own as more people begin to leverage the power of computer
 networks.
