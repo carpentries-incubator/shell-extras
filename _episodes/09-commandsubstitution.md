@@ -18,18 +18,18 @@ Often, this involves doing the same thing to a whole set of files, e.g.:
 ~~~{.bash}
 $ cd data/pdb
 $ mkdir sorted
-$ for file in cyclo*.pdb; do
+$ for file in *cyclo*.pdb; do
 >     sort $file > sorted/sorted-$file
 > done
 ~~~
 
 In this example, the shell generates for us the list of things to loop
 over, using the wildcard mechanism we saw in the *Pipes and Filters* topic. This results in the
-`cyclo*.pdf` being replaced with `cyclobutane.pdb cyclohexanol.pdb
+`*cyclo*.pdb` being replaced with `cyclobutane.pdb cyclohexanol.pdb
 cyclopropane.pdb ethylcyclohexane.pdb` before the loop starts.
 
 Another example is a so-called *parameter sweep*, where you run the same program a number of times
-with different arguments. Here is a fictitional example:
+with different arguments. Here is a fictitious example:
 
 ~~~{.bash}
 $ for cutoff in 0.001 0.01 0.05; do
